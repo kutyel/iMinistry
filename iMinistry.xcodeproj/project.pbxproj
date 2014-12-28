@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		727803141A5076EC00706D17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803131A5076EC00706D17 /* AppDelegate.swift */; };
 		727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 727803151A5076EC00706D17 /* iMinistry.xcdatamodeld */; };
-		727803191A5076EC00706D17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803181A5076EC00706D17 /* ViewController.swift */; };
 		7278031C1A5076EC00706D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7278031A1A5076EC00706D17 /* Main.storyboard */; };
 		7278031E1A5076EC00706D17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7278031D1A5076EC00706D17 /* Images.xcassets */; };
 		727803211A5076EC00706D17 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7278031F1A5076EC00706D17 /* LaunchScreen.xib */; };
 		7278032D1A5076EC00706D17 /* iMinistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7278032C1A5076EC00706D17 /* iMinistryTests.swift */; };
+		7278033E1A507FAB00706D17 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7278033D1A507FAB00706D17 /* Report.swift */; };
+		727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803411A5080D900706D17 /* MonthTableViewController.swift */; };
+		727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803431A508C5F00706D17 /* AddReportTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,15 @@
 		727803121A5076EC00706D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		727803131A5076EC00706D17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		727803161A5076EC00706D17 /* iMinistry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iMinistry.xcdatamodel; sourceTree = "<group>"; };
-		727803181A5076EC00706D17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7278031B1A5076EC00706D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7278031D1A5076EC00706D17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		727803201A5076EC00706D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		727803261A5076EC00706D17 /* iMinistryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMinistryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7278032B1A5076EC00706D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7278032C1A5076EC00706D17 /* iMinistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMinistryTests.swift; sourceTree = "<group>"; };
+		7278033D1A507FAB00706D17 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		727803411A5080D900706D17 /* MonthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewController.swift; sourceTree = "<group>"; };
+		727803431A508C5F00706D17 /* AddReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReportTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				727803131A5076EC00706D17 /* AppDelegate.swift */,
-				727803181A5076EC00706D17 /* ViewController.swift */,
 				7278031A1A5076EC00706D17 /* Main.storyboard */,
 				7278031D1A5076EC00706D17 /* Images.xcassets */,
 				7278031F1A5076EC00706D17 /* LaunchScreen.xib */,
 				727803151A5076EC00706D17 /* iMinistry.xcdatamodeld */,
+				7278033D1A507FAB00706D17 /* Report.swift */,
 				727803111A5076EC00706D17 /* Supporting Files */,
+				727803411A5080D900706D17 /* MonthTableViewController.swift */,
+				727803431A508C5F00706D17 /* AddReportTableViewController.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -215,9 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				727803191A5076EC00706D17 /* ViewController.swift in Sources */,
+				727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */,
 				727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */,
 				727803141A5076EC00706D17 /* AppDelegate.swift in Sources */,
+				727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */,
+				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +348,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = iMinistry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = iMinistry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,6 +420,7 @@
 				727803321A5076EC00706D17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		727803331A5076EC00706D17 /* Build configuration list for PBXNativeTarget "iMinistryTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +429,7 @@
 				727803351A5076EC00706D17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Custom initialization
+        
+        let nav = self.window!.rootViewController as UINavigationController
+        let master = nav.topViewController as MonthTableViewController
+        master.managedObjectContext = self.managedObjectContext
+        
         return true
     }
 
