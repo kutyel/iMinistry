@@ -10,10 +10,6 @@ import UIKit
 import CoreData
 
 class MonthTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-
-    var hours: NSDecimalNumber = 0
-    var books = 0
-    var magazines = 0
     
     var managedObjectContext: NSManagedObjectContext?
     
@@ -98,11 +94,18 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewWillAppear(animated: Bool) {
         
+        var hours: NSDecimalNumber = 0
+        var books = 0
+        var magazines = 0
+        
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
         
         for report in reports {
+            
+            println("Report: \(report.hours)")
+            
             if report.hours != nil {
-                if report.hours != NSDecimalNumber.notANumber() {
+                if report.hours! != NSDecimalNumber.notANumber() {
                     hours.decimalNumberByAdding(report.hours!)
                 }
             }
