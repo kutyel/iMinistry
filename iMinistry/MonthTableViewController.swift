@@ -11,7 +11,17 @@ import CoreData
 
 class MonthTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
+    var hours: NSDecimalNumber = 0
+    var books = 0
+    var magazines = 0
+    
     var managedObjectContext: NSManagedObjectContext?
+    
+    @IBOutlet var hoursLabel: UILabel!
+    @IBOutlet var booksLabel: UILabel!
+    @IBOutlet var magazinesLabel: UILabel!
+    
+    // Query to Core Data
     
     var fetchedResultsController: NSFetchedResultsController {
         
@@ -44,53 +54,82 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     var _fetchedResultsController: NSFetchedResultsController?
     
-    // TableView Data Source
+    // Initial load
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
-        return info.numberOfObjects
+    override func viewDidLoad() {
+        let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
+        self.title = monthToString(month)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reportCell", forIndexPath: indexPath) as UITableViewCell
-        self.configureCell(cell, atIndexPath: indexPath)
-        return cell
+    func monthToString(month: Int) -> String {
+        var monthName = ""
+        switch month {
+        case 1:
+            monthName = "January"
+        case 2:
+            monthName = "February"
+        case 3:
+            monthName = "March"
+        case 4:
+            monthName = "April"
+        case 5:
+            monthName = "May"
+        case 6:
+            monthName = "June"
+        case 7:
+            monthName = "July"
+        case 8:
+            monthName = "August"
+        case 9:
+            monthName = "September"
+        case 10:
+            monthName = "October"
+        case 11:
+            monthName = "November"
+        case 12:
+            monthName = "December"
+        default:
+            monthName = ""
+        }
+        return monthName
     }
     
-    // Private function to configure the cell to the model
+    // Report logic inside event
     
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let item = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
-        cell.textLabel?.text = "\(item.hours)"
+    override func viewWillAppear(animated: Bool) {
+        
+        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        
+        for report in reports {
+            if report.hours != nil {
+                if report.hours != NSDecimalNumber.notANumber() {
+                    hours.decimalNumberByAdding(report.hours!)
+                }
+            }
+            if report.books != nil {
+                books += report.books as Int
+            }
+            if report.magazines != nil {
+                magazines += report.magazines as Int
+            }
+        }
+        
+        self.hoursLabel.text = "\(hours)"
+        self.booksLabel.text = String(books)
+        self.magazinesLabel.text = String(magazines)
     }
-    
-    // Results Controller Delegate
+
+    // TableView update events
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
-        switch type {
-        case .Insert:
-            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-        case .Update:
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-            self.configureCell(cell!, atIndexPath: indexPath)
-            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        case .Move:
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-        case .Delete:
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        default:
-            return
-        }
-    }
-    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
+    
+    // Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let managedObjectContext = self.fetchedResultsController.managedObjectContext
