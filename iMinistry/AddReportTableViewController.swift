@@ -48,7 +48,7 @@ class AddReportTableViewController: UITableViewController {
         magazinesTextField.resignFirstResponder()
         
         let report = self.report!
-        report.hours = NSDecimalNumber(string: hoursTextField.text)
+        report.hours = (hoursTextField.text as NSString).doubleValue
         report.books = booksTextField.text.toInt()
         report.magazines = magazinesTextField.text.toInt()
         let managedObjContext = report.managedObjectContext!

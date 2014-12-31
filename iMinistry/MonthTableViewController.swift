@@ -53,7 +53,13 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     // Initial load
     
     override func viewDidLoad() {
+        
+        self.hoursLabel.textAlignment = .Right
+        self.booksLabel.textAlignment = .Right
+        self.magazinesLabel.textAlignment = .Right
+        
         let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
+        
         self.title = monthToString(month)
     }
     
@@ -94,7 +100,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewWillAppear(animated: Bool) {
         
-        var hours: NSDecimalNumber = 0
+        var hours = 0.0
         var books = 0
         var magazines = 0
         
@@ -105,9 +111,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             println("Report: \(report.hours)")
             
             if report.hours != nil {
-                if report.hours! != NSDecimalNumber.notANumber() {
-                    hours.decimalNumberByAdding(report.hours!)
-                }
+                hours += report.hours as Double
             }
             if report.books != nil {
                 books += report.books as Int
@@ -117,7 +121,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             }
         }
         
-        self.hoursLabel.text = "\(hours)"
+        self.hoursLabel.text = String(format: "%.2f", hours)
         self.booksLabel.text = String(books)
         self.magazinesLabel.text = String(magazines)
     }

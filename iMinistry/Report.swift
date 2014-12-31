@@ -11,7 +11,7 @@ import CoreData
 
 class Report: NSManagedObject {
 
-    @NSManaged var hours: NSDecimalNumber?
+    @NSManaged var hours: NSNumber?
     @NSManaged var books: NSNumber?
     @NSManaged var magazines: NSNumber?
 
