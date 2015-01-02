@@ -12,6 +12,7 @@ import CoreData
 class MonthTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext?
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     @IBOutlet var hoursLabel: UILabel!
     @IBOutlet var booksLabel: UILabel!
@@ -60,40 +61,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         
         let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
         
-        self.title = monthToString(month)
-    }
-    
-    func monthToString(month: Int) -> String {
-        var monthName = ""
-        switch month {
-        case 1:
-            monthName = "January"
-        case 2:
-            monthName = "February"
-        case 3:
-            monthName = "March"
-        case 4:
-            monthName = "April"
-        case 5:
-            monthName = "May"
-        case 6:
-            monthName = "June"
-        case 7:
-            monthName = "July"
-        case 8:
-            monthName = "August"
-        case 9:
-            monthName = "September"
-        case 10:
-            monthName = "October"
-        case 11:
-            monthName = "November"
-        case 12:
-            monthName = "December"
-        default:
-            monthName = ""
-        }
-        return monthName
+        self.title = months[month - 1]
     }
     
     // Report logic inside event
@@ -107,8 +75,6 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
         
         for report in reports {
-            
-            println("Report: \(report.hours)")
             
             if report.hours != nil {
                 hours += report.hours as Double

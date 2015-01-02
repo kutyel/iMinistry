@@ -22,6 +22,10 @@ class AddReportTableViewController: UITableViewController {
     @IBOutlet var booksTextField: UITextField!
     @IBOutlet var magazinesTextField: UITextField!
     
+    @IBAction func hoursChange(sender: UIStepper) {
+        hoursTextField.text = String(format: "%.2f", sender.value)
+    }
+    
     @IBAction func cancel(sender: AnyObject) {
         
         hoursTextField.resignFirstResponder()

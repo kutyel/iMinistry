@@ -120,10 +120,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hours" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEB-h8-ZSD">
-                                                    <rect key="frame" x="8" y="7" width="304" height="30"/>
+                                                    <rect key="frame" x="8" y="7" width="202" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="M8g-Ua-pJI">
+                                                    <rect key="frame" x="218" y="7" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="hoursChange:" destination="ijt-j4-ytO" eventType="valueChanged" id="2ti-cx-qMV"/>
+                                                    </connections>
+                                                </stepper>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
