@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6E574874-078A-4C3A-9F42-81035DA2B7F9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iMinistry</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8A6DAFDC94CD2BEBAF0BAEE37B6B84FFB9318B22</key>
+		<string>github.com:kutyel/iMinistry.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iMinistry.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8A6DAFDC94CD2BEBAF0BAEE37B6B84FFB9318B22</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:kutyel/iMinistry.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8A6DAFDC94CD2BEBAF0BAEE37B6B84FFB9318B22</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8A6DAFDC94CD2BEBAF0BAEE37B6B84FFB9318B22</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iMinistry</string>
+		</dict>
+	</array>
+</dict>
+</plist>
