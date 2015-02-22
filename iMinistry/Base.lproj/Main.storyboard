@@ -93,27 +93,28 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Y3-0q-9IM">
                                                     <rect key="frame" x="18" y="11" width="46" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="46" id="oqd-JI-3wA"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-nv-MIB" userLabel="numHours">
-                                                    <rect key="frame" x="282" y="10" width="30" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="PtX-7R-H1b"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="134" y="10" width="178" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="3Y3-0q-9IM" firstAttribute="top" secondItem="eQM-UF-ahL" secondAttribute="topMargin" constant="3" id="0Rq-6k-Wpb"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="u1N-nv-MIB" secondAttribute="bottom" constant="10.5" id="6mK-pe-Ogi"/>
-                                                <constraint firstItem="u1N-nv-MIB" firstAttribute="trailing" secondItem="eQM-UF-ahL" secondAttribute="trailingMargin" id="BUs-YM-cke"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="3Y3-0q-9IM" secondAttribute="bottom" constant="9.5" id="FKb-l7-Ve3"/>
-                                                <constraint firstItem="u1N-nv-MIB" firstAttribute="top" secondItem="eQM-UF-ahL" secondAttribute="topMargin" constant="2" id="fef-jt-07R"/>
-                                                <constraint firstItem="3Y3-0q-9IM" firstAttribute="leading" secondItem="eQM-UF-ahL" secondAttribute="leadingMargin" constant="10" id="pVj-6h-zem"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="u1N-nv-MIB" secondAttribute="bottom" constant="10.5" id="96l-NE-kHj"/>
+                                                <constraint firstItem="u1N-nv-MIB" firstAttribute="leading" secondItem="3Y3-0q-9IM" secondAttribute="trailing" constant="70" id="DF3-Yd-cTN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3Y3-0q-9IM" secondAttribute="bottom" constant="9.5" id="Ypc-Pg-nP0"/>
+                                                <constraint firstItem="3Y3-0q-9IM" firstAttribute="leading" secondItem="eQM-UF-ahL" secondAttribute="leadingMargin" constant="10" id="Z9J-Us-q3L"/>
+                                                <constraint firstItem="3Y3-0q-9IM" firstAttribute="top" secondItem="eQM-UF-ahL" secondAttribute="topMargin" constant="3" id="e9I-9h-HjL"/>
+                                                <constraint firstItem="u1N-nv-MIB" firstAttribute="top" secondItem="eQM-UF-ahL" secondAttribute="topMargin" constant="2" id="hxZ-jo-BxQ"/>
+                                                <constraint firstItem="u1N-nv-MIB" firstAttribute="trailing" secondItem="eQM-UF-ahL" secondAttribute="trailingMargin" id="sHQ-e6-DBh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -206,7 +207,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZH-VT-zx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130.13333333333333" y="4.7333333333333334"/>
+            <point key="canvasLocation" x="-131" y="4"/>
         </scene>
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
@@ -365,11 +366,12 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rBB-Xl-aOS" id="7JU-fw-Jh0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE6-WT-sUi" userLabel="hoursTimePicker">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="KE6-WT-sUi" userLabel="hoursTimePicker">
                                                     <rect key="frame" x="8" y="8" width="304" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="446079600.08350599">
                                                         <!--2015-02-19 23:00:00 +0000-->
                                                     </date>
+                                                    <locale key="locale" localeIdentifier="es"/>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -406,6 +408,7 @@
                         <outlet property="booksTextField" destination="moC-cG-ysS" id="Gwn-Gb-yVp"/>
                         <outlet property="brochTextField" destination="zGV-s1-0ho" id="AUD-6k-ali"/>
                         <outlet property="datePicker" destination="kqS-fx-2c1" id="5gG-Hg-XYW"/>
+                        <outlet property="hoursTimePicker" destination="KE6-WT-sUi" id="LcV-DL-dO6"/>
                         <outlet property="magazTextField" destination="6py-ev-Oi0" id="Luv-b8-vVc"/>
                         <outlet property="returTextField" destination="N9W-aE-PcT" id="pqh-yN-suY"/>
                         <outlet property="studiTextField" destination="ve3-wH-7Tj" id="yq6-T9-8e5"/>

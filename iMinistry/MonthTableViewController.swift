@@ -75,19 +75,30 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewWillAppear(animated: Bool) {
         
-        var hours = 0.0
+        var hours = 0
         var books = 0
+        var minutes = 0
         var magazines = 0
         var brochures = 0
         var return_visits = 0
         var bible_studies = 0
         
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        let calendar = NSCalendar.currentCalendar()
         
         for report in reports {
             
             if report.hours != nil {
-                //hours += report.hours as Double
+                let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
+                let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
+                
+                hours += timeOnTheMinistry.hour
+                minutes += timeOnTheMinistry.minute
+                
+                if minutes >= 60 {
+                    hours++
+                    minutes -= 60
+                }
             }
             if report.books != nil {
                 books += report.books as Int
@@ -106,7 +117,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             }
         }
         
-        //self.hoursLabel.text = String(hours)
+        self.hoursLabel.text = minutes > 0 ? "\(hours)h \(minutes)min" : "\(hours)h"
         self.booksLabel.text = String(books)
         self.magazinesLabel.text = String(magazines)
         self.brochuresLabel.text = String(brochures)

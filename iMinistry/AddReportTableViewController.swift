@@ -72,8 +72,8 @@ class AddReportTableViewController: UITableViewController {
         studiTextField.resignFirstResponder()
         
         let report = self.report!
-        //report.hours = (hoursTextField.text as NSString).doubleValue
         report.date = datePicker.date
+        report.hours = hoursTimePicker.date
         report.books = booksTextField.text.toInt()
         report.magazines = magazTextField.text.toInt()
         report.brochures = brochTextField.text.toInt()
