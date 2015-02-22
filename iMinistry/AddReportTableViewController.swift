@@ -18,19 +18,37 @@ class AddReportTableViewController: UITableViewController {
     
     var report: Report?
     
-    @IBOutlet var hoursTextField: UITextField!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var hoursTimePicker: UIDatePicker!
     @IBOutlet var booksTextField: UITextField!
-    @IBOutlet var magazinesTextField: UITextField!
+    @IBOutlet var magazTextField: UITextField!
+    @IBOutlet var brochTextField: UITextField!
+    @IBOutlet var returTextField: UITextField!
+    @IBOutlet var studiTextField: UITextField!
     
-    @IBAction func hoursChange(sender: UIStepper) {
-        hoursTextField.text = String(format: "%.2f", sender.value)
+    @IBAction func booksChanged(sender: UIStepper) {
+        booksTextField.text = String(Int(sender.value))
+    }
+    @IBAction func magazChanged(sender: UIStepper) {
+        magazTextField.text = String(Int(sender.value))
+    }
+    @IBAction func brochChanged(sender: UIStepper) {
+        brochTextField.text = String(Int(sender.value))
+    }
+    @IBAction func returChanged(sender: UIStepper) {
+        returTextField.text = String(Int(sender.value))
+    }
+    @IBAction func studiChanged(sender: UIStepper) {
+        studiTextField.text = String(Int(sender.value))
     }
     
     @IBAction func cancel(sender: AnyObject) {
         
-        hoursTextField.resignFirstResponder()
         booksTextField.resignFirstResponder()
-        magazinesTextField.resignFirstResponder()
+        magazTextField.resignFirstResponder()
+        brochTextField.resignFirstResponder()
+        returTextField.resignFirstResponder()
+        studiTextField.resignFirstResponder()
         
         let report = self.report!
         let managedObjectContext = report.managedObjectContext!
@@ -47,14 +65,20 @@ class AddReportTableViewController: UITableViewController {
     
     @IBAction func done(sender: AnyObject) {
         
-        hoursTextField.resignFirstResponder()
         booksTextField.resignFirstResponder()
-        magazinesTextField.resignFirstResponder()
+        magazTextField.resignFirstResponder()
+        brochTextField.resignFirstResponder()
+        returTextField.resignFirstResponder()
+        studiTextField.resignFirstResponder()
         
         let report = self.report!
-        report.hours = (hoursTextField.text as NSString).doubleValue
+        //report.hours = (hoursTextField.text as NSString).doubleValue
+        report.date = datePicker.date
         report.books = booksTextField.text.toInt()
-        report.magazines = magazinesTextField.text.toInt()
+        report.magazines = magazTextField.text.toInt()
+        report.brochures = brochTextField.text.toInt()
+        report.return_visits = returTextField.text.toInt()
+        report.bible_studies = studiTextField.text.toInt()
         let managedObjContext = report.managedObjectContext!
         
         var e: NSError?

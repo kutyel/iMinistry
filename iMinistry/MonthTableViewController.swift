@@ -17,6 +17,9 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     @IBOutlet var hoursLabel: UILabel!
     @IBOutlet var booksLabel: UILabel!
     @IBOutlet var magazinesLabel: UILabel!
+    @IBOutlet var brochuresLabel: UILabel!
+    @IBOutlet var returnVisitsLabel: UILabel!
+    @IBOutlet var bibleStudiesLabel: UILabel!
     
     // Query to Core Data
     
@@ -58,10 +61,14 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         self.hoursLabel.textAlignment = .Right
         self.booksLabel.textAlignment = .Right
         self.magazinesLabel.textAlignment = .Right
+        self.brochuresLabel.textAlignment = .Right
+        self.returnVisitsLabel.textAlignment = .Right
+        self.bibleStudiesLabel.textAlignment = .Right
         
+        let year = NSCalendar.currentCalendar().component(.YearCalendarUnit, fromDate: NSDate())
         let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
         
-        self.title = months[month - 1]
+        self.title = months[month - 1] + " \(year)"
     }
     
     // Report logic inside event
@@ -71,13 +78,16 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         var hours = 0.0
         var books = 0
         var magazines = 0
+        var brochures = 0
+        var return_visits = 0
+        var bible_studies = 0
         
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
         
         for report in reports {
             
             if report.hours != nil {
-                hours += report.hours as Double
+                //hours += report.hours as Double
             }
             if report.books != nil {
                 books += report.books as Int
@@ -85,11 +95,23 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             if report.magazines != nil {
                 magazines += report.magazines as Int
             }
+            if report.brochures != nil {
+                brochures += report.brochures as Int
+            }
+            if report.return_visits != nil {
+                return_visits += report.return_visits as Int
+            }
+            if report.bible_studies != nil {
+                bible_studies += report.bible_studies as Int
+            }
         }
         
-        self.hoursLabel.text = String(format: "%.2f", hours)
+        //self.hoursLabel.text = String(hours)
         self.booksLabel.text = String(books)
         self.magazinesLabel.text = String(magazines)
+        self.brochuresLabel.text = String(brochures)
+        self.returnVisitsLabel.text = String(return_visits)
+        self.bibleStudiesLabel.text = String(bible_studies)
     }
 
     // TableView update events

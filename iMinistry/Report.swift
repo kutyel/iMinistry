@@ -11,8 +11,11 @@ import CoreData
 
 class Report: NSManagedObject {
 
-    @NSManaged var hours: NSNumber?
+    @NSManaged var date: NSDate
+    @NSManaged var hours: NSDate?
     @NSManaged var books: NSNumber?
+    @NSManaged var brochures: NSNumber?
     @NSManaged var magazines: NSNumber?
-
+    @NSManaged var bible_studies: NSNumber?
+    @NSManaged var return_visits: NSNumber?
 }
