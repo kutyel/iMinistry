@@ -65,10 +65,11 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         self.returnVisitsLabel.textAlignment = .Right
         self.bibleStudiesLabel.textAlignment = .Right
         
-        let year = NSCalendar.currentCalendar().component(.YearCalendarUnit, fromDate: NSDate())
-        let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
+        let calendar = NSCalendar.currentCalendar()
+        let year = calendar.component(.YearCalendarUnit, fromDate: NSDate())
+        let month = calendar.components(.MonthCalendarUnit, fromDate: NSDate()).month
         
-        self.title = months[month - 1] + " \(year)"
+        self.title = "\(months[month - 1]) \(year)"
     }
     
     // Report logic inside event

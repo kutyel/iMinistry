@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZLs-xG-8fw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -24,15 +23,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Books &amp; Sign-Language Videos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bO-Kh-vhk">
-                                                    <rect key="frame" x="15" y="11" width="243" height="21"/>
+                                                    <rect key="frame" x="16" y="14" width="243" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe0-uK-wVf" userLabel="numBooks">
-                                                    <rect key="frame" x="282" y="11" width="30" height="21"/>
+                                                    <rect key="frame" x="282" y="17" width="30" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="PXQ-84-olL"/>
+                                                        <constraint firstAttribute="width" constant="30" id="lEw-7P-GTI"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -40,13 +39,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4bO-Kh-vhk" firstAttribute="leading" secondItem="uYq-tu-T2V" secondAttribute="leadingMargin" constant="7" id="4rM-gK-AQY"/>
-                                                <constraint firstItem="qe0-uK-wVf" firstAttribute="firstBaseline" secondItem="4bO-Kh-vhk" secondAttribute="firstBaseline" id="EtZ-q7-lfT"/>
-                                                <constraint firstItem="4bO-Kh-vhk" firstAttribute="top" secondItem="uYq-tu-T2V" secondAttribute="topMargin" constant="3" id="OvE-WG-KVD"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4bO-Kh-vhk" secondAttribute="bottom" constant="9.5" id="aez-B9-0na"/>
-                                                <constraint firstItem="qe0-uK-wVf" firstAttribute="leading" secondItem="4bO-Kh-vhk" secondAttribute="trailing" constant="24" id="bfh-eD-sDB"/>
-                                                <constraint firstItem="qe0-uK-wVf" firstAttribute="trailing" secondItem="uYq-tu-T2V" secondAttribute="trailingMargin" id="q5j-xR-NNY"/>
-                                                <constraint firstItem="4bO-Kh-vhk" firstAttribute="baseline" secondItem="qe0-uK-wVf" secondAttribute="baseline" id="syB-95-kFn"/>
+                                                <constraint firstItem="4bO-Kh-vhk" firstAttribute="leading" secondItem="uYq-tu-T2V" secondAttribute="leadingMargin" constant="8" id="92d-9x-C3O"/>
+                                                <constraint firstItem="qe0-uK-wVf" firstAttribute="trailing" secondItem="uYq-tu-T2V" secondAttribute="trailingMargin" id="BRs-Rf-may"/>
+                                                <constraint firstItem="4bO-Kh-vhk" firstAttribute="top" secondItem="uYq-tu-T2V" secondAttribute="topMargin" constant="6" id="Xjk-JK-92d"/>
+                                                <constraint firstItem="qe0-uK-wVf" firstAttribute="top" secondItem="uYq-tu-T2V" secondAttribute="topMargin" constant="9" id="cGX-C7-AAB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qe0-uK-wVf" secondAttribute="bottom" constant="3.5" id="j6M-Tz-Ax9"/>
+                                                <constraint firstItem="qe0-uK-wVf" firstAttribute="leading" secondItem="4bO-Kh-vhk" secondAttribute="trailing" constant="23" id="oXI-dK-hi5"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4bO-Kh-vhk" secondAttribute="bottom" constant="-0.5" id="wj5-0G-NyR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -212,7 +211,7 @@
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
             <objects>
-                <tableViewController id="ijt-j4-ytO" customClass="AddReportTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="ijt-j4-ytO" customClass="AddReportTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fU8-Gg-bc9" customClass="Add">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,13 +245,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8u7-hv-maa" id="uYe-Ag-URc">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Books &amp; Sign-Language Videos" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moC-cG-ysS">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Books &amp; Sign-Language Videos" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="moC-cG-ysS">
                                                     <rect key="frame" x="8" y="7" width="200" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="nZE-6h-R9l"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="5iy-6L-MAy" userLabel="booksStepper">
                                                     <rect key="frame" x="218" y="8" width="94" height="29"/>
@@ -262,9 +258,11 @@
                                                 </stepper>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="moC-cG-ysS" secondAttribute="centerY" constant="-0.25" id="6er-rr-UM8"/>
                                                 <constraint firstItem="5iy-6L-MAy" firstAttribute="trailing" secondItem="uYe-Ag-URc" secondAttribute="trailingMargin" id="8vC-xR-9Jk"/>
+                                                <constraint firstItem="5iy-6L-MAy" firstAttribute="leading" secondItem="moC-cG-ysS" secondAttribute="trailing" constant="10" id="BjB-bN-q9H"/>
                                                 <constraint firstItem="5iy-6L-MAy" firstAttribute="trailing" secondItem="uYe-Ag-URc" secondAttribute="trailingMargin" id="Otw-Cr-2fH"/>
-                                                <constraint firstItem="moC-cG-ysS" firstAttribute="leading" secondItem="uYe-Ag-URc" secondAttribute="leadingMargin" id="ZCG-PE-FwG"/>
+                                                <constraint firstItem="moC-cG-ysS" firstAttribute="leading" secondItem="uYe-Ag-URc" secondAttribute="leadingMargin" id="Yyi-x9-Ove"/>
                                                 <constraint firstItem="moC-cG-ysS" firstAttribute="bottom" secondItem="5iy-6L-MAy" secondAttribute="bottom" id="bjT-IY-7bC"/>
                                                 <constraint firstAttribute="centerY" secondItem="5iy-6L-MAy" secondAttribute="centerY" constant="-0.5" id="iSW-B2-IWi"/>
                                                 <constraint firstItem="5iy-6L-MAy" firstAttribute="top" secondItem="uYe-Ag-URc" secondAttribute="topMargin" id="xkb-cP-cth"/>
@@ -277,29 +275,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4q2-8P-6vi" id="wIF-Gy-P32">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="w4R-MB-vy6" userLabel="brochuresStepper">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="w4R-MB-vy6" userLabel="brochuresStepper">
                                                     <rect key="frame" x="241" y="7" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="brochChanged:" destination="ijt-j4-ytO" eventType="valueChanged" id="EkM-Gg-3K2"/>
                                                     </connections>
                                                 </stepper>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brochures &amp; Tracts" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGV-s1-0ho">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brochures &amp; Tracts" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGV-s1-0ho">
                                                     <rect key="frame" x="8" y="7" width="225" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="w4R-MB-vy6" firstAttribute="top" secondItem="wIF-Gy-P32" secondAttribute="topMargin" constant="-1" id="E3B-ss-BrC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="w4R-MB-vy6" secondAttribute="trailing" constant="-23" id="Fcd-ZX-mLJ"/>
-                                                <constraint firstItem="zGV-s1-0ho" firstAttribute="leading" secondItem="wIF-Gy-P32" secondAttribute="leadingMargin" id="HeL-Ny-5CC"/>
-                                                <constraint firstAttribute="centerX" secondItem="w4R-MB-vy6" secondAttribute="centerX" constant="-128" id="N7W-j0-Ic0"/>
-                                                <constraint firstAttribute="centerY" secondItem="w4R-MB-vy6" secondAttribute="centerY" constant="0.25" id="SD3-o1-24T"/>
-                                                <constraint firstItem="zGV-s1-0ho" firstAttribute="top" secondItem="wIF-Gy-P32" secondAttribute="topMargin" constant="-1" id="Sh3-aw-Rnk"/>
-                                                <constraint firstItem="w4R-MB-vy6" firstAttribute="leading" secondItem="zGV-s1-0ho" secondAttribute="trailing" constant="8" id="h6f-KV-b8M"/>
-                                                <constraint firstAttribute="centerX" secondItem="zGV-s1-0ho" secondAttribute="centerX" constant="39.5" id="k4M-1g-MnZ"/>
-                                                <constraint firstAttribute="centerY" secondItem="zGV-s1-0ho" secondAttribute="centerY" constant="-0.25" id="mld-tc-RaH"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="O1g-PC-mZk">
@@ -310,7 +297,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Magazines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6py-ev-Oi0">
                                                     <rect key="frame" x="8" y="7" width="225" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="8DQ-iT-fHn" userLabel="magazinesStepper">
                                                     <rect key="frame" x="241" y="8" width="94" height="29"/>
@@ -330,7 +317,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Return Visits" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N9W-aE-PcT">
                                                     <rect key="frame" x="8" y="7" width="225" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qV8-be-bjf" userLabel="returnVisitsStepper">
                                                     <rect key="frame" x="241" y="7" width="94" height="29"/>
@@ -350,7 +337,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Different Bible Studies" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ve3-wH-7Tj">
                                                     <rect key="frame" x="8" y="7" width="225" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iqf-r6-L7Z" userLabel="bibleStudiesStepper">
                                                     <rect key="frame" x="241" y="8" width="94" height="29"/>
@@ -366,19 +353,28 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rBB-Xl-aOS" id="7JU-fw-Jh0">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="KE6-WT-sUi" userLabel="hoursTimePicker">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KE6-WT-sUi" userLabel="hoursTimePicker">
                                                     <rect key="frame" x="8" y="8" width="304" height="162"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="446079600.08350599">
-                                                        <!--2015-02-19 23:00:00 +0000-->
+                                                    <date key="date" timeIntervalSinceReferenceDate="441759600.08350599">
+                                                        <!--2014-12-31 23:00:00 +0000-->
                                                     </date>
                                                     <locale key="locale" localeIdentifier="es"/>
                                                 </datePicker>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km5-lO-PAa">
+                                                    <rect key="frame" x="20" y="78" width="51" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerX" secondItem="KE6-WT-sUi" secondAttribute="centerX" id="KBR-MQ-dch"/>
                                                 <constraint firstItem="KE6-WT-sUi" firstAttribute="trailing" secondItem="7JU-fw-Jh0" secondAttribute="trailingMargin" id="Oqj-vE-Udp"/>
+                                                <constraint firstItem="Km5-lO-PAa" firstAttribute="leading" secondItem="7JU-fw-Jh0" secondAttribute="leadingMargin" constant="12" id="cZA-NJ-qo2"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="KE6-WT-sUi" secondAttribute="bottom" constant="21.5" id="lti-6G-DNr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Km5-lO-PAa" secondAttribute="trailing" constant="241" id="plf-h3-OGK"/>
                                                 <constraint firstAttribute="centerY" secondItem="KE6-WT-sUi" secondAttribute="centerY" constant="11" id="psm-ye-smu"/>
+                                                <constraint firstAttribute="centerY" secondItem="Km5-lO-PAa" secondAttribute="centerY" constant="11.25" id="qL9-Q4-oyn"/>
                                                 <constraint firstItem="KE6-WT-sUi" firstAttribute="leading" secondItem="7JU-fw-Jh0" secondAttribute="leadingMargin" id="xj4-pR-OHQ"/>
                                                 <constraint firstItem="KE6-WT-sUi" firstAttribute="top" secondItem="7JU-fw-Jh0" secondAttribute="topMargin" id="yzv-k3-A0L"/>
                                             </constraints>
