@@ -139,18 +139,24 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     // Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let managedObjectContext = self.fetchedResultsController.managedObjectContext
-        let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as Report
         
-        let nav = segue.destinationViewController as UINavigationController
-        let add = nav.topViewController as AddReportTableViewController
-        
-        add.report = report
-        add.didCancel = {
-            cont in self.dismissViewControllerAnimated(true, completion: nil)
-        }
-        add.didFinish = {
-            cont in self.dismissViewControllerAnimated(true, completion: nil)
+        if segue.identifier == "AddReport" {
+            let managedObjectContext = self.fetchedResultsController.managedObjectContext
+            let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as Report
+            
+            //self.performSegueWithIdentifier("ViewRecents", sender: self)
+            
+            let nav = segue.destinationViewController as UINavigationController
+            let add = nav.topViewController as AddReportTableViewController
+            
+            add.report = report
+            
+            add.didCancel = {
+                cont in self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            add.didFinish = {
+                cont in self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
 }

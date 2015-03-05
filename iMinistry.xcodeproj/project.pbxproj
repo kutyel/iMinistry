@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */; };
 		727803141A5076EC00706D17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803131A5076EC00706D17 /* AppDelegate.swift */; };
 		727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 727803151A5076EC00706D17 /* iMinistry.xcdatamodeld */; };
 		7278031C1A5076EC00706D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7278031A1A5076EC00706D17 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentReportsViewController.swift; sourceTree = "<group>"; };
 		7278030E1A5076EC00706D17 /* iMinistry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMinistry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		727803121A5076EC00706D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		727803131A5076EC00706D17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				727803111A5076EC00706D17 /* Supporting Files */,
 				727803411A5080D900706D17 /* MonthTableViewController.swift */,
 				727803431A508C5F00706D17 /* AddReportTableViewController.swift */,
+				7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				727803141A5076EC00706D17 /* AppDelegate.swift in Sources */,
 				727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */,
 				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
+				7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

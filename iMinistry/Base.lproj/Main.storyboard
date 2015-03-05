@@ -189,6 +189,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Current Month" id="vYm-8A-E3G">
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="nrf-OP-hHx">
+                            <connections>
+                                <segue destination="GAg-tX-FzZ" kind="modal" identifier="ViewRecents" id="Prn-XX-Hy2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y5t-jC-2Px">
                             <connections>
                                 <segue destination="MBv-qY-ns9" kind="modal" identifier="AddReport" id="Pat-ga-VAL"/>
@@ -206,7 +211,66 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZH-VT-zx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-131" y="4"/>
+            <point key="canvasLocation" x="-291" y="5"/>
+        </scene>
+        <!--Recent Reports-->
+        <scene sceneID="PNA-Wo-Ebv">
+            <objects>
+                <tableViewController id="Pzh-DL-fuW" customClass="RecentReportsViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0fl-WE-sIJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportCell" textLabel="4Ui-4E-agQ" detailTextLabel="l25-ac-5mw" style="IBUITableViewCellStyleSubtitle" id="0CM-di-nW3">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0CM-di-nW3" id="P3O-0d-hal">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Ui-4E-agQ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l25-ac-5mw">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Pzh-DL-fuW" id="xfT-gl-9pi"/>
+                            <outlet property="delegate" destination="Pzh-DL-fuW" id="eqp-cP-YJ2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recent Reports" id="QuU-NW-lrj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="mI1-KI-wg3"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rR-Et-JKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="675" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FtY-Lj-GQb">
+            <objects>
+                <navigationController id="GAg-tX-FzZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CgW-GD-8LE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Pzh-DL-fuW" kind="relationship" relationship="rootViewController" id="moB-xz-oTX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-5A-9LU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="-630"/>
         </scene>
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
@@ -428,7 +492,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbL-Tk-K2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266.66666666666669" y="5.6799999999999988"/>
+            <point key="canvasLocation" x="135" y="5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dcM-Is-EG9">
@@ -444,7 +508,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqJ-ES-RA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-508.80000000000001" y="5.6799999999999988"/>
+            <point key="canvasLocation" x="-725" y="5"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
