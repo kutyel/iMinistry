@@ -144,8 +144,6 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             let managedObjectContext = self.fetchedResultsController.managedObjectContext
             let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as Report
             
-            //self.performSegueWithIdentifier("ViewRecents", sender: self)
-            
             let nav = segue.destinationViewController as UINavigationController
             let add = nav.topViewController as AddReportTableViewController
             

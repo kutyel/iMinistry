@@ -189,9 +189,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Current Month" id="vYm-8A-E3G">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="nrf-OP-hHx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="nrf-OP-hHx">
                             <connections>
-                                <segue destination="GAg-tX-FzZ" kind="modal" identifier="ViewRecents" id="Prn-XX-Hy2"/>
+                                <segue destination="Pzh-DL-fuW" kind="push" id="eXJ-yP-bEp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y5t-jC-2Px">
@@ -213,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="-291" y="5"/>
         </scene>
-        <!--Recent Reports-->
+        <!--Recents-->
         <scene sceneID="PNA-Wo-Ebv">
             <objects>
                 <tableViewController id="Pzh-DL-fuW" customClass="RecentReportsViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
@@ -248,29 +248,14 @@
                             <outlet property="delegate" destination="Pzh-DL-fuW" id="eqp-cP-YJ2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recent Reports" id="QuU-NW-lrj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="mI1-KI-wg3"/>
+                    <navigationItem key="navigationItem" title="Recents" id="RGy-eQ-fwV">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="veE-kZ-aX4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="tqU-hI-59g"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rR-Et-JKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="675" y="-630"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FtY-Lj-GQb">
-            <objects>
-                <navigationController id="GAg-tX-FzZ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CgW-GD-8LE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Pzh-DL-fuW" kind="relationship" relationship="rootViewController" id="moB-xz-oTX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-5A-9LU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="135" y="-630"/>
+            <point key="canvasLocation" x="135" y="-632"/>
         </scene>
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
