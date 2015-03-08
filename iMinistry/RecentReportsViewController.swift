@@ -78,13 +78,28 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
         // The title is the date
         let format = NSDateFormatter()
-        format.dateFormat = "dd/MM/yyyy"
+        format.dateFormat = "EEEE, d MMMM yyyy"
         cell.textLabel?.text = format.stringFromDate(report.date)
         // The subtitle is the report's highlights
+        var highlights = "";
+        if report.hours != nil {
+            let calendar = NSCalendar.currentCalendar()
+            let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
+            let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
+            
+            if timeOnTheMinistry.hour > 0 {
+                highlights += "\(timeOnTheMinistry.hour) hours, "
+            }
+            if timeOnTheMinistry.minute > 0 {
+                highlights += "\(timeOnTheMinistry.minute) minutes, "
+            }
+            
+        }
         if report.magazines != nil {
             var mag = String(report.magazines as Int)
-            cell.detailTextLabel?.text = "\(mag) magazines..."
+            highlights += "\(mag) magazines..."
         }
+        cell.detailTextLabel?.text = highlights
     }
 
     // Results Controller Delegate

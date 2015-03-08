@@ -12,7 +12,6 @@ import CoreData
 class MonthTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext?
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
     @IBOutlet var hoursLabel: UILabel!
     @IBOutlet var booksLabel: UILabel!
@@ -31,13 +30,24 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         
         let managedObjectContext = self.managedObjectContext!
         
-        // Query all the reports ascending by the number of hours
+        // Query the reports for the current month
         
+        let cal = NSCalendar.currentCalendar()
+        var com = cal.components(.YearCalendarUnit | .MonthCalendarUnit, fromDate: NSDate())
+        com.day = 1
+        var one = NSDateComponents()
+        one.month = 1
+    
+        let beginDate = cal.dateFromComponents(com)
+        let endDate = cal.dateByAddingComponents(one, toDate: beginDate!, options: nil)
+        
+        let predicate = NSPredicate(format: "date >= %@ AND date < %@", beginDate!, endDate!);
         let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "hours", ascending: true)
         let req = NSFetchRequest()
         req.entity = entity
         req.sortDescriptors = [sort]
+        req.predicate = predicate
         
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
@@ -69,7 +79,9 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         let year = calendar.component(.YearCalendarUnit, fromDate: NSDate())
         let month = calendar.components(.MonthCalendarUnit, fromDate: NSDate()).month
         
-        self.title = "\(months[month - 1]) \(year)"
+        let format = NSDateFormatter()
+        format.dateFormat = "MMMM yyyy"
+        self.title = format.stringFromDate(NSDate())
     }
     
     // Report logic inside event
