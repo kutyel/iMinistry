@@ -75,10 +75,6 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         self.returnVisitsLabel.textAlignment = .Right
         self.bibleStudiesLabel.textAlignment = .Right
         
-        let calendar = NSCalendar.currentCalendar()
-        let year = calendar.component(.YearCalendarUnit, fromDate: NSDate())
-        let month = calendar.components(.MonthCalendarUnit, fromDate: NSDate()).month
-        
         let format = NSDateFormatter()
         format.dateFormat = "MMMM yyyy"
         self.title = format.stringFromDate(NSDate())

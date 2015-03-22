@@ -52,6 +52,11 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         return 1
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // Divide by weeks
+        return "week 1"
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         return info.numberOfObjects
@@ -128,5 +133,17 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
+    }
+    
+    // Share functionallity
+    
+    @IBAction
+    func shareReport(sender: UIBarButtonItem)
+    {
+        // TODO: implement this with the report details
+        // TODO: move this code to the current month view
+        let report = "Here is where all the report items go..."
+        let activity = UIActivityViewController(activityItems: Array(arrayLiteral: report), applicationActivities: nil)
+        self.presentViewController(activity, animated: true, completion: nil)
     }
 }
