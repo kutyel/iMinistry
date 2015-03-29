@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pager.currentPageIndicatorTintColor = UIColor.blackColor()
         pager.backgroundColor = UIColor.whiteColor()
         
+        self.window?.backgroundColor = UIColor.whiteColor()
+        
         return true
     }
 

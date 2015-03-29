@@ -30,6 +30,10 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         var pageViewRect = self.view.bounds
         self.pageViewController!.view.frame = pageViewRect
         
+        if (self.respondsToSelector(Selector("edgesForExtendedLayout"))) {
+            self.edgesForExtendedLayout = UIRectEdge.None
+        }
+        
         self.pageViewController!.didMoveToParentViewController(self)
         
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
@@ -80,5 +84,4 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         let activity = UIActivityViewController(activityItems: Array(arrayLiteral: report), applicationActivities: nil)
         self.presentViewController(activity, animated: true, completion: nil)
     }
-
 }

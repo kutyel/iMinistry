@@ -15,8 +15,8 @@ class MonthModelController: NSObject, UIPageViewControllerDataSource {
     
     override init() {
         super.init()
-        let dateFormatter = NSDateFormatter()
-        pageData = dateFormatter.monthSymbols
+        // TODO: change for REAL data
+        pageData = NSDateFormatter().monthSymbols
     }
     
     func viewControllerAtIndex(index: Int, storyboard: UIStoryboard) -> MonthTableViewController? {

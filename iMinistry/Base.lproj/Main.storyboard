@@ -29,9 +29,9 @@
         <!--Month Table View Controller-->
         <scene sceneID="qrs-oJ-BSh">
             <objects>
-                <tableViewController storyboardIdentifier="MonthContentController" id="EIv-LC-KpS" customClass="MonthTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="cdq-fc-rXP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                <tableViewController storyboardIdentifier="MonthContentController" extendedLayoutIncludesOpaqueBars="YES" id="EIv-LC-KpS" customClass="MonthTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="cdq-fc-rXP">
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -209,9 +209,8 @@
                             <outlet property="delegate" destination="EIv-LC-KpS" id="Zlm-Yz-14y"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bibleStudiesLabel" destination="g54-te-hbx" id="j4D-ix-KNP"/>
                         <outlet property="booksLabel" destination="qe0-uK-wVf" id="7au-nf-plW"/>
@@ -271,11 +270,11 @@
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="ijt-j4-ytO" customClass="AddReportTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fU8-Gg-bc9" customClass="Add">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="ijt-j4-ytO" customClass="AddReportTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fU8-Gg-bc9" customClass="Add">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="aLk-yw-0TJ">
                                 <cells>
@@ -448,6 +447,7 @@
                             <outlet property="delegate" destination="ijt-j4-ytO" id="VFU-Gh-sKg"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Add New Report" id="uSb-yz-ZtP">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dkM-4p-h6S">
                             <connections>
@@ -474,10 +474,10 @@
             </objects>
             <point key="canvasLocation" x="1084" y="5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Add Report Navigation Controller-->
         <scene sceneID="ueF-le-aOz">
             <objects>
-                <navigationController id="MBv-qY-ns9" sceneMemberID="viewController">
+                <navigationController id="MBv-qY-ns9" userLabel="Add Report Navigation Controller" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zcW-Fk-e9n">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -490,10 +490,10 @@
             </objects>
             <point key="canvasLocation" x="667" y="5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Month Pager Navigation Controller-->
         <scene sceneID="6Ir-7K-Wmq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eiu-E7-FEk" sceneMemberID="viewController">
+                <navigationController id="eiu-E7-FEk" userLabel="Month Pager Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="05O-9Y-APc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

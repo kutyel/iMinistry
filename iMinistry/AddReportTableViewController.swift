@@ -18,6 +18,14 @@ class AddReportTableViewController: UITableViewController {
     
     var report: Report?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Prevent weird space between nav controller and the view
+        if (self.respondsToSelector(Selector("edgesForExtendedLayout"))) {
+            self.edgesForExtendedLayout = UIRectEdge.None
+        }
+    }
+    
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var hoursTimePicker: UIDatePicker!
     @IBOutlet var booksTextField: UITextField!
