@@ -80,7 +80,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         let format = NSDateFormatter()
         format.dateFormat = "MMMM yyyy"
         
-        //self.title = format.stringFromDate(NSDate())
+        self.title = format.stringFromDate(NSDate())
         
         if let obj: AnyObject = dataObject {
             self.title = obj.description
