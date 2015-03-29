@@ -11,6 +11,8 @@ import CoreData
 
 class MonthTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
+    var dataObject: AnyObject?
+    var pageViewController : UIPageViewController!
     var managedObjectContext: NSManagedObjectContext?
     
     @IBOutlet var hoursLabel: UILabel!
@@ -77,7 +79,14 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         
         let format = NSDateFormatter()
         format.dateFormat = "MMMM yyyy"
-        self.title = format.stringFromDate(NSDate())
+        
+        //self.title = format.stringFromDate(NSDate())
+        
+        if let obj: AnyObject = dataObject {
+            self.title = obj.description
+        } else {
+            self.title = ""
+        }
     }
     
     // Report logic inside event
@@ -163,6 +172,10 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             add.didFinish = {
                 cont in self.dismissViewControllerAnimated(true, completion: nil)
             }
+        } else if segue.identifier == "RecentReports" {
+            let nav = segue.destinationViewController as UINavigationController
+            let his = nav.topViewController as RecentReportsViewController
+            his.managedObjectContext = self.fetchedResultsController.managedObjectContext
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7225CB901ABF348F00004040 /* MonthPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7225CB8F1ABF348F00004040 /* MonthPagerViewController.swift */; };
 		7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */; };
 		727803141A5076EC00706D17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803131A5076EC00706D17 /* AppDelegate.swift */; };
 		727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 727803151A5076EC00706D17 /* iMinistry.xcdatamodeld */; };
@@ -17,6 +18,7 @@
 		7278033E1A507FAB00706D17 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7278033D1A507FAB00706D17 /* Report.swift */; };
 		727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803411A5080D900706D17 /* MonthTableViewController.swift */; };
 		727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803431A508C5F00706D17 /* AddReportTableViewController.swift */; };
+		727B7E3B1AC84CCD00C56A55 /* MonthModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7225CB8F1ABF348F00004040 /* MonthPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPagerViewController.swift; sourceTree = "<group>"; };
 		7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentReportsViewController.swift; sourceTree = "<group>"; };
 		7278030E1A5076EC00706D17 /* iMinistry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMinistry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		727803121A5076EC00706D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		7278033D1A507FAB00706D17 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		727803411A5080D900706D17 /* MonthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewController.swift; sourceTree = "<group>"; };
 		727803431A508C5F00706D17 /* AddReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReportTableViewController.swift; sourceTree = "<group>"; };
+		727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +97,10 @@
 				7278033D1A507FAB00706D17 /* Report.swift */,
 				727803111A5076EC00706D17 /* Supporting Files */,
 				727803411A5080D900706D17 /* MonthTableViewController.swift */,
+				7225CB8F1ABF348F00004040 /* MonthPagerViewController.swift */,
 				727803431A508C5F00706D17 /* AddReportTableViewController.swift */,
 				7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */,
+				727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -224,12 +230,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727B7E3B1AC84CCD00C56A55 /* MonthModelController.swift in Sources */,
 				727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */,
 				727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */,
 				727803141A5076EC00706D17 /* AppDelegate.swift in Sources */,
 				727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */,
 				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
 				7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */,
+				7225CB901ABF348F00004040 /* MonthPagerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

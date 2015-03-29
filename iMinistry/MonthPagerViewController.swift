@@ -8,36 +8,77 @@
 
 import UIKit
 
-//UIPageViewControllerDataSource
-class MonthPagerViewController: UIPageViewController {
+class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
 
+    var pageViewController: UIPageViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.pageViewController!.delegate = self
+        
+        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)!
+        let viewControllers = [startingViewController]
+        self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
+        
+        self.pageViewController!.dataSource = self.modelController
+        
+        self.addChildViewController(self.pageViewController!)
+        self.view.addSubview(self.pageViewController!.view)
+        
+        var pageViewRect = self.view.bounds
+        self.pageViewController!.view.frame = pageViewRect
+        
+        self.pageViewController!.didMoveToParentViewController(self)
+        
+        self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
+        
+        // Dynamically generate buttons
+        
+        let share = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "shareReport:")
+        let addReport = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addReport:")
+        
+        self.navigationItem.rightBarButtonItems = [addReport, share]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    /*
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        <#code#>
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        <#code#>
-    }*/
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    var modelController: MonthModelController {
+        if _monthModelController == nil {
+            _monthModelController = MonthModelController()
+        }
+        return _monthModelController!
     }
-    */
+    
+    var _monthModelController: MonthModelController? = nil
+    
+    // UIPageViewController delegate methods
+    
+    func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
+        let currentViewController = self.pageViewController!.viewControllers[0] as UIViewController
+        let viewControllers = [currentViewController]
+        self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
+        
+        self.pageViewController!.doubleSided = false
+        return .Min
+    }
+    
+    // Actions
+    
+    func addReport(sender: UIBarButtonItem)
+    {
+        self.performSegueWithIdentifier("AddReport", sender: sender)
+    }
+    
+    func shareReport(sender: UIBarButtonItem)
+    {
+        // TODO: implement this with the report details
+        let report = "Here is where all the report items go..."
+        let activity = UIActivityViewController(activityItems: Array(arrayLiteral: report), applicationActivities: nil)
+        self.presentViewController(activity, animated: true, completion: nil)
+    }
 
 }

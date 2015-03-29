@@ -134,16 +134,4 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
-    
-    // Share functionallity
-    
-    @IBAction
-    func shareReport(sender: UIBarButtonItem)
-    {
-        // TODO: implement this with the report details
-        // TODO: move this code to the current month view
-        let report = "Here is where all the report items go..."
-        let activity = UIActivityViewController(activityItems: Array(arrayLiteral: report), applicationActivities: nil)
-        self.presentViewController(activity, animated: true, completion: nil)
-    }
 }

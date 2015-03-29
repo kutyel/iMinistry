@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZLs-xG-8fw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eiu-E7-FEk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Current Month-->
+        <scene sceneID="FY3-6x-Hry">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xlq-Se-XBQ" customClass="MonthPagerViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Current Month" id="j7d-rg-ygw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="fh8-qt-T6R">
+                            <connections>
+                                <segue destination="Pzh-DL-fuW" kind="push" identifier="RecentReports" id="9yo-oz-UfU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iK1-Dm-eg5">
+                            <connections>
+                                <segue destination="MBv-qY-ns9" kind="modal" identifier="AddReport" id="5fz-iH-w3w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S3g-FI-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-183" y="5"/>
+        </scene>
+        <!--Month Table View Controller-->
         <scene sceneID="qrs-oJ-BSh">
             <objects>
-                <tableViewController id="EIv-LC-KpS" customClass="MonthTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MonthContentController" id="EIv-LC-KpS" customClass="MonthTableViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="cdq-fc-rXP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <pageControl key="tableFooterView" opaque="NO" alpha="0.49999999999999961" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="5" currentPage="2" id="9zm-qZ-bn1">
-                            <rect key="frame" x="-19" y="-18" width="320" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </pageControl>
                         <sections>
                             <tableViewSection id="14S-nd-lmT">
                                 <cells>
@@ -195,21 +210,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Current Month" id="vYm-8A-E3G">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="nrf-OP-hHx">
-                            <connections>
-                                <segue destination="Pzh-DL-fuW" kind="push" id="eXJ-yP-bEp"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y5t-jC-2Px">
-                            <connections>
-                                <segue destination="MBv-qY-ns9" kind="modal" identifier="AddReport" id="Pat-ga-VAL"/>
-                            </connections>
-                        </barButtonItem>
-                        <connections>
-                            <outlet property="rightBarButtonItem" destination="y5t-jC-2Px" id="ZdT-64-kpM"/>
-                        </connections>
-                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bibleStudiesLabel" destination="g54-te-hbx" id="j4D-ix-KNP"/>
@@ -222,9 +223,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZH-VT-zx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-291" y="5"/>
+            <point key="canvasLocation" x="241" y="5"/>
         </scene>
-        <!--Recents-->
+        <!--Recent Reports-->
         <scene sceneID="PNA-Wo-Ebv">
             <objects>
                 <tableViewController id="Pzh-DL-fuW" customClass="RecentReportsViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
@@ -259,18 +260,13 @@
                             <outlet property="delegate" destination="Pzh-DL-fuW" id="eqp-cP-YJ2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recents" id="RGy-eQ-fwV">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="veE-kZ-aX4"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Wjv-FD-3zd" userLabel="Share">
-                            <connections>
-                                <action selector="shareReport:" destination="Pzh-DL-fuW" id="n0p-fV-s7q"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Recent Reports" id="RGy-eQ-fwV" userLabel="Recent Reports">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="q8K-QB-hQS"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rR-Et-JKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="-632"/>
+            <point key="canvasLocation" x="241" y="-652"/>
         </scene>
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
@@ -476,7 +472,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH5-ag-f4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="5"/>
+            <point key="canvasLocation" x="1084" y="5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ueF-le-aOz">
@@ -492,23 +488,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbL-Tk-K2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="5"/>
+            <point key="canvasLocation" x="667" y="5"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="dcM-Is-EG9">
+        <scene sceneID="6Ir-7K-Wmq">
             <objects>
-                <navigationController id="ZLs-xG-8fw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EkA-xx-FcI">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eiu-E7-FEk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="05O-9Y-APc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="EIv-LC-KpS" kind="relationship" relationship="rootViewController" id="9zs-LY-Xrz"/>
+                        <segue destination="xlq-Se-XBQ" kind="relationship" relationship="rootViewController" id="X5E-LM-wbv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iqJ-ES-RA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ct9-sU-Czi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-725" y="5"/>
+            <point key="canvasLocation" x="-715" y="5"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
