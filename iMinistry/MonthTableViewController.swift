@@ -81,12 +81,13 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         format.dateFormat = "MMMM yyyy"
         
         self.navigationItem.title = format.stringFromDate(NSDate())
-        /*
+        
         if let obj: AnyObject = dataObject {
-            self.title = obj.description
+            NSLog("%@", obj.description)
+            self.parentViewController?.navigationController?.title = obj.description
         } else {
             self.title = ""
-        }*/
+        }
     }
     
     // Report logic inside event

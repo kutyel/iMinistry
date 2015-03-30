@@ -49,12 +49,19 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // TODO: this is going to be the number of weeks
-        return 1
+        return self.fetchedResultsController.fetchedObjects!.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // Divide by weeks
-        return "week 1"
+        let calendar = NSCalendar.currentCalendar()
+        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: reports[section].date).weekOfYear
+        if reports[section].hours != nil {
+            let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: reports[section].hours!, options: nil)
+            let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: reports[section].hours!, options: nil)
+            return "Week \(week), \(timeOnTheMinistry.hour) hours"
+        }
+        return "Week \(week)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

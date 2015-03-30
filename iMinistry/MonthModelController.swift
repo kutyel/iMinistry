@@ -9,14 +9,21 @@
 import UIKit
 import CoreData
 
-class MonthModelController: NSObject, UIPageViewControllerDataSource {
+class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPageViewControllerDataSource {
     
-    var pageData = NSArray()
+    var pageData = NSMutableArray()
     
     override init() {
         super.init()
-        // TODO: change for REAL data
-        pageData = NSDateFormatter().monthSymbols
+        
+        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        
+        for r in reports {
+            let m = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: r.date).month
+            if !pageData.containsObject(m) {
+                pageData.addObject(m)
+            }
+        }
     }
     
     func viewControllerAtIndex(index: Int, storyboard: UIStoryboard) -> MonthTableViewController? {
@@ -79,13 +86,13 @@ class MonthModelController: NSObject, UIPageViewControllerDataSource {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "flaviocorpa.iMinistry" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1] as NSURL
-        }()
+    }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("iMinistry", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
-        }()
+    }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
@@ -109,7 +116,7 @@ class MonthModelController: NSObject, UIPageViewControllerDataSource {
         }
         
         return coordinator
-        }()
+    }()
     
     lazy var managedObjectContext: NSManagedObjectContext? = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
@@ -120,5 +127,38 @@ class MonthModelController: NSObject, UIPageViewControllerDataSource {
         var managedObjectContext = NSManagedObjectContext()
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-        }()
+    }()
+
+    // Core Data
+    
+    var fetchedResultsController: NSFetchedResultsController {
+        
+        if self._fetchedResultsController != nil {
+            return self._fetchedResultsController!
+        }
+        
+        var managedObjectContext = self.managedObjectContext!
+        
+        // Query the reports for the current month
+        
+        let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: managedObjectContext)
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        let req = NSFetchRequest()
+        req.entity = entity
+        req.sortDescriptors = [sort]
+        
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        aFetchedResultsController.delegate = self
+        self._fetchedResultsController = aFetchedResultsController
+        
+        var e: NSError?
+        if !self._fetchedResultsController!.performFetch(&e) {
+            println("Error fetching: \(e?.localizedDescription)")
+            abort()
+        }
+        
+        return self._fetchedResultsController!
+    }
+    
+    var _fetchedResultsController: NSFetchedResultsController?
 }
