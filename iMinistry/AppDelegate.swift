@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
-    // MARK: - Core Data stack
+    // Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "flaviocorpa.iMinistry" in the application's documents Application Support directory.
@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return managedObjectContext
     }()
 
-    // MARK: - Core Data Saving support
+    // Core Data Saving support
 
     func saveContext () {
         if let moc = self.managedObjectContext {

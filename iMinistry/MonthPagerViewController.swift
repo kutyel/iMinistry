@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
 
@@ -18,7 +19,10 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         self.pageViewController!.delegate = self
         
-        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)!
+        // Load first the page view of the current month
+        
+        let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
+        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(find(self.modelController.pageData, month)!, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
         
@@ -83,5 +87,32 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         let report = "Here is where all the report items go..."
         let activity = UIActivityViewController(activityItems: Array(arrayLiteral: report), applicationActivities: nil)
         self.presentViewController(activity, animated: true, completion: nil)
+    }
+    
+    // Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        if segue.identifier == "AddReport" {
+            let managedObjectContext = appDelegate.managedObjectContext!
+            let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as Report
+            
+            let nav = segue.destinationViewController as UINavigationController
+            let add = nav.topViewController as AddReportTableViewController
+            
+            add.report = report
+            
+            add.didCancel = {
+                cont in self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            add.didFinish = {
+                cont in self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        } else if segue.identifier == "RecentReports" {
+            let next = segue.destinationViewController as RecentReportsViewController
+            next.managedObjectContext = appDelegate.managedObjectContext
+        }
     }
 }

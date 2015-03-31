@@ -11,7 +11,7 @@ import CoreData
 
 class MonthTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    var dataObject: AnyObject?
+    var month: Int?
     var pageViewController : UIPageViewController!
     var managedObjectContext: NSManagedObjectContext?
     
@@ -30,13 +30,20 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             return self._fetchedResultsController!
         }
         
-        let managedObjectContext = self.managedObjectContext!
+        // Set the initial managed object context to the app delegate one
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedObjectContext = appDelegate.managedObjectContext!
         
         // Query the reports for the current month
         
         let cal = NSCalendar.currentCalendar()
         var com = cal.components(.YearCalendarUnit | .MonthCalendarUnit, fromDate: NSDate())
         com.day = 1
+        
+        if let obj: Int = month {
+            com.month = obj
+        }
+        
         var one = NSDateComponents()
         one.month = 1
     
@@ -82,12 +89,14 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         
         self.navigationItem.title = format.stringFromDate(NSDate())
         
+        /*
         if let obj: AnyObject = dataObject {
             NSLog("%@", obj.description)
             self.parentViewController?.navigationController?.title = obj.description
         } else {
             self.title = ""
         }
+        */
     }
     
     // Report logic inside event
@@ -152,31 +161,5 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
-    }
-    
-    // Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "AddReport" {
-            let managedObjectContext = self.fetchedResultsController.managedObjectContext
-            let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as Report
-            
-            let nav = segue.destinationViewController as UINavigationController
-            let add = nav.topViewController as AddReportTableViewController
-            
-            add.report = report
-            
-            add.didCancel = {
-                cont in self.dismissViewControllerAnimated(true, completion: nil)
-            }
-            add.didFinish = {
-                cont in self.dismissViewControllerAnimated(true, completion: nil)
-            }
-        } else if segue.identifier == "RecentReports" {
-            let nav = segue.destinationViewController as UINavigationController
-            let his = nav.topViewController as RecentReportsViewController
-            his.managedObjectContext = self.fetchedResultsController.managedObjectContext
-        }
     }
 }

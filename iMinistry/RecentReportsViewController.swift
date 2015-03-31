@@ -49,7 +49,8 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // TODO: this is going to be the number of weeks
-        return self.fetchedResultsController.fetchedObjects!.count
+        //return self.fetchedResultsController.fetchedObjects!.count
+        return 1
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
