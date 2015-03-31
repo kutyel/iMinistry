@@ -17,6 +17,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     @IBOutlet var hoursLabel: UILabel!
     @IBOutlet var booksLabel: UILabel!
+    @IBOutlet var monthTitle: UILabel!
     @IBOutlet var magazinesLabel: UILabel!
     @IBOutlet var brochuresLabel: UILabel!
     @IBOutlet var returnVisitsLabel: UILabel!
@@ -77,26 +78,21 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func viewDidLoad() {
         
+        if let monthTitle: Int? = self.month {
+            let format = NSDateFormatter()
+            format.dateFormat = "MMMM yyyy"
+            let cal = NSCalendar.currentCalendar()
+            var today = cal.components(.YearCalendarUnit | .MonthCalendarUnit, fromDate: NSDate())
+            today.month = monthTitle!
+            self.monthTitle.text = format.stringFromDate(cal.dateFromComponents(today)!)
+        }
+        
         self.hoursLabel.textAlignment = .Right
         self.booksLabel.textAlignment = .Right
         self.magazinesLabel.textAlignment = .Right
         self.brochuresLabel.textAlignment = .Right
         self.returnVisitsLabel.textAlignment = .Right
         self.bibleStudiesLabel.textAlignment = .Right
-        
-        let format = NSDateFormatter()
-        format.dateFormat = "MMMM yyyy"
-        
-        self.navigationItem.title = format.stringFromDate(NSDate())
-        
-        /*
-        if let obj: AnyObject = dataObject {
-            NSLog("%@", obj.description)
-            self.parentViewController?.navigationController?.title = obj.description
-        } else {
-            self.title = ""
-        }
-        */
     }
     
     // Report logic inside event

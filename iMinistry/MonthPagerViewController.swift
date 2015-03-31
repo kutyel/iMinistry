@@ -22,7 +22,8 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         // Load first the page view of the current month
         
         let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
-        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(find(self.modelController.pageData, month)!, storyboard: self.storyboard!)!
+        let index = find(self.modelController.pageData, month)!
+        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(index, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
         

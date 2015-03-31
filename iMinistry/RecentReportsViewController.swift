@@ -22,7 +22,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         let delegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedObjectContext = delegate.managedObjectContext!
     
-        // Query all the reports ascending by the number of hours
+        // Query all the reports descending by date
     
         let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "date", ascending: false)

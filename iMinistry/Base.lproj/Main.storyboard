@@ -5,11 +5,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Current Month-->
+        <!--Reports-->
         <scene sceneID="FY3-6x-Hry">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xlq-Se-XBQ" customClass="MonthPagerViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Current Month" id="j7d-rg-ygw">
+                    <navigationItem key="navigationItem" title="Reports" id="j7d-rg-ygw">
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="fh8-qt-T6R">
                             <connections>
                                 <segue destination="Pzh-DL-fuW" kind="push" identifier="RecentReports" id="9yo-oz-UfU"/>
@@ -37,6 +37,26 @@
                         <sections>
                             <tableViewSection id="14S-nd-lmT">
                                 <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hhG-re-vKL">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hhG-re-vKL" id="JYe-BW-z0s">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VQ-ZX-ZAD" userLabel="monthTitle">
+                                                    <rect key="frame" x="139" y="14" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="6VQ-ZX-ZAD" secondAttribute="centerX" id="ds5-rQ-Fqa"/>
+                                                <constraint firstAttribute="centerY" secondItem="6VQ-ZX-ZAD" secondAttribute="centerY" constant="0.25" id="t8d-8I-v2U"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="booksCell" id="i9R-4z-PCr">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -217,6 +237,7 @@
                         <outlet property="brochuresLabel" destination="0SN-xw-NzC" id="1Ft-hb-gpg"/>
                         <outlet property="hoursLabel" destination="u1N-nv-MIB" id="VDl-e4-frS"/>
                         <outlet property="magazinesLabel" destination="YpY-ug-3pA" id="Rpc-MJ-WKO"/>
+                        <outlet property="monthTitle" destination="6VQ-ZX-ZAD" id="qLH-l9-khk"/>
                         <outlet property="returnVisitsLabel" destination="URh-x9-b3G" id="HmE-Au-lbT"/>
                     </connections>
                 </tableViewController>
@@ -224,7 +245,7 @@
             </objects>
             <point key="canvasLocation" x="241" y="5"/>
         </scene>
-        <!--Recent Reports-->
+        <!--Recents-->
         <scene sceneID="PNA-Wo-Ebv">
             <objects>
                 <tableViewController id="Pzh-DL-fuW" customClass="RecentReportsViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
@@ -259,7 +280,7 @@
                             <outlet property="delegate" destination="Pzh-DL-fuW" id="eqp-cP-YJ2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recent Reports" id="RGy-eQ-fwV" userLabel="Recent Reports">
+                    <navigationItem key="navigationItem" title="Recents" id="RGy-eQ-fwV">
                         <barButtonItem key="backBarButtonItem" title="Back" id="q8K-QB-hQS"/>
                     </navigationItem>
                 </tableViewController>
