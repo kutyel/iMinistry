@@ -98,7 +98,6 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     // Report logic inside event
     
     override func viewWillAppear(animated: Bool) {
-        
         var hours = 0
         var books = 0
         var minutes = 0
@@ -108,6 +107,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         var bible_studies = 0
         
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        
         let calendar = NSCalendar.currentCalendar()
         
         for report in reports {
@@ -148,7 +148,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         self.returnVisitsLabel.text = String(return_visits)
         self.bibleStudiesLabel.text = String(bible_studies)
     }
-
+    
     // TableView update events
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
