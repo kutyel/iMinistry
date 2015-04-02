@@ -75,19 +75,20 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // TODO: calculate the total hours for that week
-        /*
+        var hours = 0
         let calendar = NSCalendar.currentCalendar()
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
-        let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: reports[section].date).weekOfYear
-        
-        if reports[section].hours != nil {
-            let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: reports[section].hours!, options: nil)
-            let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: reports[section].hours!, options: nil)
-            return "Week \(week), \(timeOnTheMinistry.hour) hours"
+        for r in reports {
+            let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: r.date).weekOfYear
+            if week == Array(weeks.keys)[section]{
+                if r.hours != nil {
+                    let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: reports[section].hours!, options: nil)
+                    let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: reports[section].hours!, options: nil)
+                    hours += timeOnTheMinistry.hour
+                }
+            }
         }
-        */
-        return "Week \(Array(weeks.keys)[section])"
+        return "Week \(Array(weeks.keys).sorted(>)[section]) (\(hours) hours)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,13 +113,14 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     // Private function to configure the cell to the model
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
-        println("indexpathRow: \(indexPath.row), indexpathSection: \(indexPath.section)")
+        // TODO: manage report index correctly
+        //let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
+        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        let report = reports[indexPath.row]
         // The title is the date
         let format = NSDateFormatter()
         format.dateFormat = "EEEE, d MMMM yyyy"
         cell.textLabel?.text = format.stringFromDate(report.date)
-        println("report.date: \(format.stringFromDate(report.date))")
         
         // The subtitle is the report's highlights
         var highlights = "";
