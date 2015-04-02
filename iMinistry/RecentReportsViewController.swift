@@ -11,7 +11,30 @@ import CoreData
 
 class RecentReportsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
+    // Dictionary of weeks and # of reports for each week
+    var weeks: [Int:Int] = [:]
     var managedObjectContext: NSManagedObjectContext?
+    
+    override func viewDidLoad() {
+        let calendar = NSCalendar.currentCalendar()
+        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        
+        println("Complete array of weeks:")
+        for r in reports {
+            let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: r.date).weekOfYear
+            if let weekItem: Int = weeks[week] {
+                // week exists, one more row
+                weeks[week] = weekItem.advancedBy(1)
+            } else {
+                // week does not exist, add week
+                weeks[week] = 1
+            }
+        }
+        
+        for (k, v) in weeks {
+            println("week: \(k), rows: \(v)")
+        }
+    }
     
     var fetchedResultsController: NSFetchedResultsController {
     
@@ -33,7 +56,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req,managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
         self._fetchedResultsController = aFetchedResultsController
-    
+        
         var e: NSError?
         if !self._fetchedResultsController!.performFetch(&e) {
             println("Error fetching: \(e?.localizedDescription)")
@@ -48,26 +71,27 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     // TableView Data Source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // TODO: this is going to be the number of weeks
-        //return self.fetchedResultsController.fetchedObjects!.count
-        return 1
+        return weeks.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // TODO: calculate the total hours for that week
+        /*
         let calendar = NSCalendar.currentCalendar()
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
         let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: reports[section].date).weekOfYear
+        
         if reports[section].hours != nil {
             let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: reports[section].hours!, options: nil)
             let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: reports[section].hours!, options: nil)
             return "Week \(week), \(timeOnTheMinistry.hour) hours"
         }
-        return "Week \(week)"
+        */
+        return "Week \(Array(weeks.keys)[section])"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
-        return info.numberOfObjects
+        return Array(weeks.values)[section]
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,10 +113,13 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
+        println("indexpathRow: \(indexPath.row), indexpathSection: \(indexPath.section)")
         // The title is the date
         let format = NSDateFormatter()
         format.dateFormat = "EEEE, d MMMM yyyy"
         cell.textLabel?.text = format.stringFromDate(report.date)
+        println("report.date: \(format.stringFromDate(report.date))")
+        
         // The subtitle is the report's highlights
         var highlights = "";
         if report.hours != nil {
