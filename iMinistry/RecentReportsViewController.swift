@@ -11,28 +11,22 @@ import CoreData
 
 class RecentReportsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    // Dictionary of weeks and # of reports for each week
+    // Weeks and # of reports for each week
     var weeks: [Int:Int] = [:]
+    var index = 0
     var managedObjectContext: NSManagedObjectContext?
     
     override func viewDidLoad() {
         let calendar = NSCalendar.currentCalendar()
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
         
-        println("Complete array of weeks:")
         for r in reports {
             let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: r.date).weekOfYear
             if let weekItem: Int = weeks[week] {
-                // week exists, one more row
-                weeks[week] = weekItem.advancedBy(1)
+                weeks[week] = weekItem + 1
             } else {
-                // week does not exist, add week
                 weeks[week] = 1
             }
-        }
-        
-        for (k, v) in weeks {
-            println("week: \(k), rows: \(v)")
         }
     }
     
@@ -52,8 +46,9 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         let req = NSFetchRequest()
         req.entity = entity
         req.sortDescriptors = [sort]
+        //req.propertiesToGroupBy = [Array(arrayLiteral: group)]
     
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req,managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
         self._fetchedResultsController = aFetchedResultsController
         
@@ -88,7 +83,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 }
             }
         }
-        return "Week \(Array(weeks.keys).sorted(>)[section]) (\(hours) hours)"
+        return "Week \(Array(weeks.keys).sorted(>)[section]) (\(hours)h)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,10 +108,9 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     // Private function to configure the cell to the model
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        // TODO: manage report index correctly
-        //let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
-        let report = reports[indexPath.row]
+        let report = reports[index]
+        
         // The title is the date
         let format = NSDateFormatter()
         format.dateFormat = "EEEE, d MMMM yyyy"
@@ -135,13 +129,13 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
             if timeOnTheMinistry.minute > 0 {
                 highlights += "\(timeOnTheMinistry.minute) minutes, "
             }
-            
         }
         if report.magazines != nil {
             var mag = String(report.magazines as Int)
             highlights += "\(mag) magazines..."
         }
         cell.detailTextLabel?.text = highlights
+        index++
     }
 
     // Results Controller Delegate
