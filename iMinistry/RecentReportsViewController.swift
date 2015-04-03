@@ -71,19 +71,27 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var hours = 0
+        var minutes = 0
+        let headers = Array(weeks.keys).sorted(>)
         let calendar = NSCalendar.currentCalendar()
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
         for r in reports {
             let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: r.date).weekOfYear
-            if week == Array(weeks.keys)[section]{
+            if week == headers[section]{
                 if r.hours != nil {
-                    let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: reports[section].hours!, options: nil)
-                    let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: reports[section].hours!, options: nil)
+                    let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: r.hours!, options: nil)
+                    let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: r.hours!, options: nil)
                     hours += timeOnTheMinistry.hour
+                    minutes += timeOnTheMinistry.minute
+                    
+                    if minutes >= 60 {
+                        hours++
+                        minutes -= 60
+                    }
                 }
             }
         }
-        return "Week \(Array(weeks.keys).sorted(>)[section]) (\(hours)h)"
+        return "Week \(headers[section]) (\(hours)h)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,6 +108,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle:
         UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        //TODO I believe here is the problem with the delete records
         let report = fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         fetchedResultsController.managedObjectContext.deleteObject(report)
         fetchedResultsController.managedObjectContext.save(nil)

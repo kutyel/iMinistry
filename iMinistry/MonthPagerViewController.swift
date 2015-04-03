@@ -22,8 +22,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         // Load first the page view of the current month
         
         let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
-        let index = find(self.modelController.pageData, month)!
-        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(index, storyboard: self.storyboard!)!
+        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(find(self.modelController.pageData, month)!, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
         
@@ -105,32 +104,34 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         
         for report in reports {
             
-            if report.hours != nil {
-                let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
-                let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
-                
-                hours += timeOnTheMinistry.hour
-                minutes += timeOnTheMinistry.minute
-                
-                if minutes >= 60 {
-                    hours++
-                    minutes -= 60
+            if calendar.components(.MonthCalendarUnit, fromDate: report.date).month == monthTitle {
+                if report.hours != nil {
+                    let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
+                    let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
+                    
+                    hours += timeOnTheMinistry.hour
+                    minutes += timeOnTheMinistry.minute
+                    
+                    if minutes >= 60 {
+                        hours++
+                        minutes -= 60
+                    }
                 }
-            }
-            if report.books != nil {
-                books += report.books as Int
-            }
-            if report.magazines != nil {
-                magazines += report.magazines as Int
-            }
-            if report.brochures != nil {
-                brochures += report.brochures as Int
-            }
-            if report.return_visits != nil {
-                return_visits += report.return_visits as Int
-            }
-            if report.bible_studies != nil {
-                bible_studies += report.bible_studies as Int
+                if report.books != nil {
+                    books += report.books as Int
+                }
+                if report.magazines != nil {
+                    magazines += report.magazines as Int
+                }
+                if report.brochures != nil {
+                    brochures += report.brochures as Int
+                }
+                if report.return_visits != nil {
+                    return_visits += report.return_visits as Int
+                }
+                if report.bible_studies != nil {
+                    bible_studies += report.bible_studies as Int
+                }
             }
         }
         
