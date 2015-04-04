@@ -18,4 +18,8 @@ class Report: NSManagedObject {
     @NSManaged var magazines: NSNumber?
     @NSManaged var bible_studies: NSNumber?
     @NSManaged var return_visits: NSNumber?
+    
+    func week () -> Int {
+        return NSCalendar.currentCalendar().components(.WeekOfYearCalendarUnit, fromDate: self.date).weekOfYear
+    }
 }

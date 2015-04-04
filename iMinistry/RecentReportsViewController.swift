@@ -11,24 +11,7 @@ import CoreData
 
 class RecentReportsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    // Weeks and # of reports for each week
-    var weeks: [Int:Int] = [:]
-    var index = 0
     var managedObjectContext: NSManagedObjectContext?
-    
-    override func viewDidLoad() {
-        let calendar = NSCalendar.currentCalendar()
-        let reports = self.fetchedResultsController.fetchedObjects as [Report]
-        
-        for r in reports {
-            let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: r.date).weekOfYear
-            if let weekItem: Int = weeks[week] {
-                weeks[week] = weekItem + 1
-            } else {
-                weeks[week] = 1
-            }
-        }
-    }
     
     var fetchedResultsController: NSFetchedResultsController {
     
@@ -48,7 +31,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         req.sortDescriptors = [sort]
         //req.propertiesToGroupBy = [Array(arrayLiteral: group)]
     
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: "week", cacheName: nil)
         aFetchedResultsController.delegate = self
         self._fetchedResultsController = aFetchedResultsController
         
@@ -66,18 +49,17 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     // TableView Data Source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return weeks.count
+        return self.fetchedResultsController.sections!.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var hours = 0
         var minutes = 0
-        let headers = Array(weeks.keys).sorted(>)
         let calendar = NSCalendar.currentCalendar()
         let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         for r in reports {
-            let week = calendar.components(.WeekOfYearCalendarUnit, fromDate: r.date).weekOfYear
-            if week == headers[section]{
+            if r.week() == info.name?.toInt() {
                 if r.hours != nil {
                     let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: r.hours!, options: nil)
                     let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: r.hours!, options: nil)
@@ -91,11 +73,12 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 }
             }
         }
-        return "Week \(headers[section]) (\(hours)h)"
+        return "Week \(info.name!) (\(hours)h)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Array(weeks.values)[section]
+        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+        return info.numberOfObjects
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -108,7 +91,6 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle:
         UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        //TODO I believe here is the problem with the delete records
         let report = fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         fetchedResultsController.managedObjectContext.deleteObject(report)
         fetchedResultsController.managedObjectContext.save(nil)
@@ -117,8 +99,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     // Private function to configure the cell to the model
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let reports = self.fetchedResultsController.fetchedObjects as [Report]
-        let report = reports[index]
+        let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
         
         // The title is the date
         let format = NSDateFormatter()
@@ -144,7 +125,6 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
             highlights += "\(mag) magazines..."
         }
         cell.detailTextLabel?.text = highlights
-        index++
     }
 
     // Results Controller Delegate

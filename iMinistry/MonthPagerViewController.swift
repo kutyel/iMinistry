@@ -90,7 +90,6 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         var brochures = 0
         var return_visits = 0
         var bible_studies = 0
-        
         let reports = self.modelController.fetchedResultsController.fetchedObjects as [Report]
         let calendar = NSCalendar.currentCalendar()
         let month = calendar.components(.MonthCalendarUnit, fromDate: NSDate()).month
