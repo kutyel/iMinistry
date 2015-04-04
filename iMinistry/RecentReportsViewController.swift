@@ -73,7 +73,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 }
             }
         }
-        return "Week \(info.name!) (\(hours)h)"
+        return minutes > 0 ? "Week \(info.name!) (\(hours)h \(minutes)min)" : "Week \(info.name!) (\(hours)h)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,24 +107,27 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         cell.textLabel?.text = format.stringFromDate(report.date)
         
         // The subtitle is the report's highlights
-        var highlights = "";
+        var highlights: [String] = [];
         if report.hours != nil {
             let calendar = NSCalendar.currentCalendar()
             let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
             let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
             
             if timeOnTheMinistry.hour > 0 {
-                highlights += "\(timeOnTheMinistry.hour) hours, "
+                highlights.append("\(timeOnTheMinistry.hour) hours")
             }
             if timeOnTheMinistry.minute > 0 {
-                highlights += "\(timeOnTheMinistry.minute) minutes, "
+                highlights.append("\(timeOnTheMinistry.minute) minutes")
             }
         }
-        if report.magazines != nil {
-            var mag = String(report.magazines as Int)
-            highlights += "\(mag) magazines..."
+        if let tracts = report.brochures as? Int {
+            highlights.append("\(tracts) tracts")
         }
-        cell.detailTextLabel?.text = highlights
+        if let returns = report.return_visits as? Int {
+            highlights.append("\(returns) return visits")
+        }
+        cell.detailTextLabel?.text = ", ".join(highlights.map { $0 })
+        cell.accessoryType = .DisclosureIndicator
     }
 
     // Results Controller Delegate
