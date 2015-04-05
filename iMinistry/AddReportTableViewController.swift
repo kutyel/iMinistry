@@ -20,9 +20,19 @@ class AddReportTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Prevent weird space between nav controller and the view
         if (self.respondsToSelector(Selector("edgesForExtendedLayout"))) {
             self.edgesForExtendedLayout = UIRectEdge.None
+        }
+        if self.report?.date != nil {
+            let r = self.report!
+            self.title = "Edit Report"
+            datePicker.date = r.date
+            hoursTimePicker.date = r.hours!
+            booksTextField.text = r.books?.stringValue
+            magazTextField.text = r.magazines?.stringValue
+            brochTextField.text = r.brochures?.stringValue
+            returTextField.text = r.return_visits?.stringValue
+            studiTextField.text = r.bible_studies?.stringValue
         }
     }
     
@@ -52,22 +62,23 @@ class AddReportTableViewController: UITableViewController {
     
     @IBAction func cancel(sender: AnyObject) {
         
+        //self.view.endEditing(true)
         booksTextField.resignFirstResponder()
         magazTextField.resignFirstResponder()
         brochTextField.resignFirstResponder()
         returTextField.resignFirstResponder()
         studiTextField.resignFirstResponder()
         
-        let report = self.report!
-        let managedObjectContext = report.managedObjectContext!
-        managedObjectContext.deleteObject(report)
-        
-        var e: NSError?
-        if !managedObjectContext.save(&e) {
-            println("Error at cancel: \(e?.localizedDescription)")
-            abort()
+        if self.report?.date == nil {
+            let report = self.report!
+            let managedObjectContext = report.managedObjectContext!
+            managedObjectContext.deleteObject(report)
+            var e: NSError?
+            if !managedObjectContext.save(&e) {
+                println("Error at cancel: \(e?.localizedDescription)")
+                abort()
+            }
         }
-        
         self.didCancel!(self)
     }
     

@@ -127,7 +127,6 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
             highlights.append("\(returns) return visits")
         }
         cell.detailTextLabel?.text = ", ".join(highlights.map { $0 })
-        cell.accessoryType = .DisclosureIndicator
     }
 
     // Results Controller Delegate
@@ -156,5 +155,25 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditReport" {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedObjectContext = appDelegate.managedObjectContext!
+            let indexPath = self.tableView.indexPathForCell(sender as UITableViewCell)
+            let report = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Report
+            let nav = segue.destinationViewController as UINavigationController
+            let edit = nav.topViewController as AddReportTableViewController
+            
+            edit.report = report
+            
+            edit.didCancel = {
+                cont in self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            edit.didFinish = {
+                cont in self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
 }
