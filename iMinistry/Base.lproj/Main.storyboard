@@ -285,11 +285,37 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Recents" id="RGy-eQ-fwV">
                         <barButtonItem key="backBarButtonItem" title="Back" id="q8K-QB-hQS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="vK6-Cv-GRs">
+                            <connections>
+                                <segue destination="Wci-oz-ujc" kind="push" identifier="anualReportsChart" id="7cJ-cv-pku"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6rR-Et-JKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="241" y="-714"/>
+        </scene>
+        <!--Anual Reports Chart-->
+        <scene sceneID="aLx-oF-ahN">
+            <objects>
+                <viewController id="Wci-oz-ujc" customClass="AnualReportChartViewController" customModule="iMinistry" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8EQ-VN-Gbo"/>
+                        <viewControllerLayoutGuide type="bottom" id="KV8-AX-uws"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rH1-fh-bOi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Anual Reports Chart" id="FSD-sh-ia5">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="xJ2-L2-8Jt"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbI-Vf-wmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="-714"/>
         </scene>
         <!--Add New Report-->
         <scene sceneID="GEr-Ue-ayY">
