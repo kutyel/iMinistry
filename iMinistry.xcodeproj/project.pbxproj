@@ -21,6 +21,7 @@
 		727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803411A5080D900706D17 /* MonthTableViewController.swift */; };
 		727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803431A508C5F00706D17 /* AddReportTableViewController.swift */; };
 		727B7E3B1AC84CCD00C56A55 /* MonthModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */; };
+		72E2BF7F1AD47F9C003FE426 /* iMinistryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		727803411A5080D900706D17 /* MonthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewController.swift; sourceTree = "<group>"; };
 		727803431A508C5F00706D17 /* AddReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReportTableViewController.swift; sourceTree = "<group>"; };
 		727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthModelController.swift; sourceTree = "<group>"; };
+		72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryFooterView.swift; path = Views/iMinistryFooterView.swift; sourceTree = "<group>"; };
 		B3ED902632E932E7CB99C2FB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F26181A23AC5936403893EED /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 				7225CB8F1ABF348F00004040 /* MonthPagerViewController.swift */,
 				7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */,
 				722EDF5C1AD2DF5F0095349D /* iMinistry-Bridging-Header.h */,
+				72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
 				7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */,
 				725B2AC41AD326A400E52093 /* AnualReportChartViewController.swift in Sources */,
+				72E2BF7F1AD47F9C003FE426 /* iMinistryFooterView.swift in Sources */,
 				7225CB901ABF348F00004040 /* MonthPagerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
