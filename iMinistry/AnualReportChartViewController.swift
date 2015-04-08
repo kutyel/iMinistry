@@ -10,7 +10,7 @@ import UIKit
 
 class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
 
-    let staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 25, 60, 65, 75, 35, 70, 25 ]
+    let staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
     
     // Constants
     
@@ -83,7 +83,6 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         return self.anualReportBarPadding
     }
     
-    // Returns UIColor from hexadecimal value
     func colorFromHex(hex: Int) -> UIColor {
         return UIColor(red: ((CGFloat)((hex & 0xFF0000) >> 16))/255.0, green: ((CGFloat)((hex & 0xFF00) >> 8))/255.0, blue: ((CGFloat)(hex & 0xFF))/255.0, alpha: 1.0)
     }
