@@ -9,7 +9,8 @@
 import UIKit
 
 class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
-
+    
+    let order = [ 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ]
     let staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
     
     // Constants
@@ -28,8 +29,6 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // JBBarChartView
         
         let anualReportsChart = JBBarChartView()
         anualReportsChart.dataSource = self
@@ -37,22 +36,17 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         anualReportsChart.headerPadding = anualReportChartHeaderPadding
         anualReportsChart.frame = CGRectMake(anualReportChartPadding, anualReportChartPadding, self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeight)
         
-        // JBChartHeaderView
-        /*
-        JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBBarChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBBarChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBBarChartViewControllerChartPadding * 2), kJBBarChartViewControllerChartHeaderHeight)];
-        headerView.titleLabel.text = [kJBStringLabelAverageMonthlyTemperature uppercaseString];
-        headerView.subtitleLabel.text = kJBStringLabel2012;
-        headerView.separatorColor = kJBColorBarChartHeaderSeparatorColor;
-        anualReportsChart.headerView = headerView;
-        */
-        
-        // iMinistryFooterView
+        var header = iMinistryHeaderView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartHeaderHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeaderHeight))
+        header.titleLabel.text = "SERVICE YEAR"
+        header.subtitleLabel.text = "2014-2015"
+        header.separatorColor = UIColor.lightGrayColor()
+        anualReportsChart.headerView = header
         
         var footer = iMinistryFooterView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartFooterHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartFooterHeight))
-        footer.padding = anualReportChartFooterPadding;
-        footer.leftLabel.text = monthSymbols.first?.uppercaseString
+        footer.padding = anualReportChartFooterPadding
+        footer.leftLabel.text = monthSymbols[8].uppercaseString
         footer.leftLabel.textColor = UIColor.lightGrayColor()
-        footer.rightLabel.text = monthSymbols.last?.uppercaseString
+        footer.rightLabel.text = monthSymbols[7].uppercaseString
         footer.rightLabel.textColor = UIColor.lightGrayColor()
         anualReportsChart.footerView = footer
         
@@ -74,6 +68,8 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         // TODO this must be the actual report data
         return self.staticData[Int(index)]
     }
+    
+    // Chart Customization
     
     func barChartView(barChartView: JBBarChartView!, colorForBarViewAtIndex index: UInt) -> UIColor! {
         return colorFromHex(0x4a6da7) // JW.ORG

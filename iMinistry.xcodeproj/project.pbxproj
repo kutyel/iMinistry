@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1658E9009A352D0CE6BDF147 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8968A5454ABE528C76280E /* libPods.a */; };
 		7225CB901ABF348F00004040 /* MonthPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7225CB8F1ABF348F00004040 /* MonthPagerViewController.swift */; };
+		72370DFE1AD5DB5B00268871 /* iMinistryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */; };
 		7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */; };
 		725B2AC41AD326A400E52093 /* AnualReportChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B2AC31AD326A400E52093 /* AnualReportChartViewController.swift */; };
 		727803141A5076EC00706D17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803131A5076EC00706D17 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 		0C8968A5454ABE528C76280E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7225CB8F1ABF348F00004040 /* MonthPagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPagerViewController.swift; sourceTree = "<group>"; };
 		722EDF5C1AD2DF5F0095349D /* iMinistry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iMinistry-Bridging-Header.h"; sourceTree = "<group>"; };
+		72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryHeaderView.swift; path = Views/iMinistryHeaderView.swift; sourceTree = "<group>"; };
 		7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentReportsViewController.swift; sourceTree = "<group>"; };
 		725B2AC31AD326A400E52093 /* AnualReportChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnualReportChartViewController.swift; sourceTree = "<group>"; };
 		7278030E1A5076EC00706D17 /* iMinistry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMinistry.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */,
 				722EDF5C1AD2DF5F0095349D /* iMinistry-Bridging-Header.h */,
 				72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */,
+				72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				727B7E3B1AC84CCD00C56A55 /* MonthModelController.swift in Sources */,
 				727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */,
 				727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */,
+				72370DFE1AD5DB5B00268871 /* iMinistryHeaderView.swift in Sources */,
 				727803141A5076EC00706D17 /* AppDelegate.swift in Sources */,
 				727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */,
 				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
