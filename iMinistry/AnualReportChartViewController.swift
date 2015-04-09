@@ -16,26 +16,28 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     // Constants
     
     let π = CGFloat(M_PI)
-    let anualReportsChart = JBBarChartView()
     let anualReportNumBars: UInt = 12
+    let anualReportsChart = JBBarChartView()
+    let anualReportNavButtonViewKey = "view"
+    let anualReportBarPadding: CGFloat = 1.0
     let anualReportChartHeight: CGFloat = 250.0
     let anualReportChartPadding: CGFloat = 10.0
     let anualReportChartHeaderHeight: CGFloat = 80.0
     let anualReportChartHeaderPadding: CGFloat = 20.0
     let anualReportChartFooterHeight: CGFloat = 25.0
     let anualReportChartFooterPadding: CGFloat = 5.0
-    let anualReportBarPadding: CGFloat = 1.0
     let monthSymbols = NSDateFormatter().shortMonthSymbols
-    let anualReportNavButtonViewKey = "view"
     
     // View Creation
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let anualReportsChart = JBBarChartView()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Continue", style: .Plain, target: self, action: "chartToggleButtonPressed:")
+        
         anualReportsChart.dataSource = self
         anualReportsChart.delegate = self
+        anualReportsChart.minimumValue = 0
         anualReportsChart.headerPadding = anualReportChartHeaderPadding
         anualReportsChart.frame = CGRectMake(anualReportChartPadding, anualReportChartPadding, self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeight)
         
@@ -66,14 +68,15 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     }
     
     func barChartView(barChartView: JBBarChartView!, heightForBarViewAtIndex index: UInt) -> CGFloat {
-        // TODO this must be the actual report data
+        // TODO: this is the key line when implementing the real data for the service year
+        // let index = find(order, r.month())!
         return self.staticData[Int(index)]
     }
     
     // Chart Customization
     
     func barChartView(barChartView: JBBarChartView!, colorForBarViewAtIndex index: UInt) -> UIColor! {
-        return colorFromHex(0x4a6da7) // JW.ORG
+        return index % 2 == 0 ? colorFromHex(0x4a6da7) : colorFromHex(0x5b398b) // JW.ORG
     }
     
     func barPaddingForBarChartView(barChartView: JBBarChartView!) -> CGFloat {
