@@ -10,18 +10,15 @@ import UIKit
 
 class iMinistryFooterView: UIView {
     
-    var padding: CGFloat
-    var leftLabel: UILabel
-    var rightLabel: UILabel
+    var padding: CGFloat = 0
+    var leftLabel = UILabel()
+    var rightLabel = UILabel()
 
     convenience override init(){
         self.init(frame: CGRectZero)
     }
     
     override init(frame: CGRect) {
-        padding = 0.0
-        leftLabel = UILabel()
-        rightLabel = UILabel()
         super.init(frame: frame)
         
         self.backgroundColor = footerViewDefaultBackgroundColor
@@ -32,6 +29,7 @@ class iMinistryFooterView: UIView {
         leftLabel.adjustsFontSizeToFitWidth = true
         leftLabel.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
         leftLabel.textAlignment = .Left
+        leftLabel.textColor = UIColor.blackColor()
         leftLabel.shadowColor = UIColor.lightGrayColor()
         leftLabel.shadowOffset = CGSizeMake(0, 1)
         leftLabel.backgroundColor = UIColor.clearColor()
@@ -41,6 +39,7 @@ class iMinistryFooterView: UIView {
         rightLabel.adjustsFontSizeToFitWidth = true
         rightLabel.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
         rightLabel.textAlignment = .Right
+        rightLabel.textColor = UIColor.blackColor()
         rightLabel.shadowColor = UIColor.lightGrayColor()
         rightLabel.shadowOffset = CGSizeMake(0, 1)
         rightLabel.backgroundColor = UIColor.clearColor()
@@ -48,9 +47,6 @@ class iMinistryFooterView: UIView {
     }
 
     required init(coder: NSCoder) {
-        padding = 0.0
-        leftLabel = UILabel()
-        rightLabel = UILabel()
         super.init(coder: coder)
     }
     

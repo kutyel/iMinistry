@@ -10,16 +10,12 @@ import UIKit
 
 class iMinistryHeaderView: UIView {
 
-    var titleLabel: UILabel
-    var subtitleLabel: UILabel
-    var separatorColor: UIColor
-    var separatorView: UIView
+    var titleLabel = UILabel()
+    var separatorView = UIView()
+    var subtitleLabel = UILabel()
+    var separatorColor = UIColor.blackColor()
     
     override init(frame: CGRect) {
-        titleLabel = UILabel()
-        separatorView = UIView()
-        subtitleLabel = UILabel()
-        separatorColor = UIColor.blackColor()
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.clearColor()
@@ -51,15 +47,11 @@ class iMinistryHeaderView: UIView {
         self.addSubview(separatorView)
     }
 
-    let headerViewPadding: CGFloat = 5.0
+    let headerViewPadding: CGFloat = 10.0
     let headerViewSeparatorHeight: CGFloat = 0.5
     let headerViewDefaultSeparatorColor = UIColor.lightGrayColor()
     
     required init(coder: NSCoder) {
-        titleLabel = UILabel()
-        separatorView = UIView()
-        subtitleLabel = UILabel()
-        separatorColor = UIColor.blackColor()
         super.init(coder: coder)
     }
     
@@ -72,7 +64,7 @@ class iMinistryHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        var yOffset: CGFloat = 10.0
+        var yOffset: CGFloat = 0
         let titleHeight = ceil(self.bounds.size.height * 0.5)
         let subTitleHeight = self.bounds.size.height - titleHeight - headerViewSeparatorHeight
         let xOffset: CGFloat = headerViewPadding

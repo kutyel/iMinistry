@@ -45,9 +45,7 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         var footer = iMinistryFooterView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartFooterHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartFooterHeight))
         footer.padding = anualReportChartFooterPadding
         footer.leftLabel.text = monthSymbols[8].uppercaseString
-        footer.leftLabel.textColor = UIColor.lightGrayColor()
         footer.rightLabel.text = monthSymbols[7].uppercaseString
-        footer.rightLabel.textColor = UIColor.lightGrayColor()
         anualReportsChart.footerView = footer
         
         self.view.addSubview(anualReportsChart)
