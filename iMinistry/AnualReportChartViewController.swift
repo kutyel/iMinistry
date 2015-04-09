@@ -15,6 +15,8 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     
     // Constants
     
+    let π = CGFloat(M_PI)
+    let anualReportsChart = JBBarChartView()
     let anualReportNumBars: UInt = 12
     let anualReportChartHeight: CGFloat = 250.0
     let anualReportChartPadding: CGFloat = 10.0
@@ -24,13 +26,14 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     let anualReportChartFooterPadding: CGFloat = 5.0
     let anualReportBarPadding: CGFloat = 1.0
     let monthSymbols = NSDateFormatter().shortMonthSymbols
+    let anualReportNavButtonViewKey = "view"
     
     // View Creation
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let anualReportsChart = JBBarChartView()
+        //let anualReportsChart = JBBarChartView()
         anualReportsChart.dataSource = self
         anualReportsChart.delegate = self
         anualReportsChart.headerPadding = anualReportChartHeaderPadding
@@ -79,5 +82,19 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     
     func colorFromHex(hex: Int) -> UIColor {
         return UIColor(red: ((CGFloat)((hex & 0xFF0000) >> 16))/255.0, green: ((CGFloat)((hex & 0xFF00) >> 8))/255.0, blue: ((CGFloat)(hex & 0xFF))/255.0, alpha: 1.0)
+    }
+    
+    // Buttons
+    
+    func chartToggleButtonPressed(sender: UIBarButtonItem) {
+        let btnImageView = self.navigationItem.rightBarButtonItem?.valueForKey(anualReportNavButtonViewKey) as UIView
+        btnImageView.userInteractionEnabled = false
+        
+        let transform = self.anualReportsChart.state == JBChartViewState.Expanded ? CGAffineTransformMakeRotation(π) : CGAffineTransformMakeRotation(0)
+        btnImageView.transform = transform
+        
+        self.anualReportsChart.setState(self.anualReportsChart.state == JBChartViewState.Expanded ? JBChartViewState.Collapsed : JBChartViewState.Expanded, animated: true, callback: {
+            btnImageView.userInteractionEnabled = true
+        })
     }
 }

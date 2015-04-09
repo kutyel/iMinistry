@@ -173,4 +173,5 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
             next.managedObjectContext = appDelegate.managedObjectContext
         }
     }
+    
 }
