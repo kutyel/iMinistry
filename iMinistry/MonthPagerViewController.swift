@@ -21,7 +21,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         
         // Load first the page view of the current month
         
-        let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
+        let month = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
         let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(find(self.modelController.pageData, month)!, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
@@ -66,7 +66,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
     // UIPageViewController delegate methods
     
     func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
-        let currentViewController = self.pageViewController!.viewControllers[0] as UIViewController
+        let currentViewController = self.pageViewController!.viewControllers[0] as! UIViewController
         let viewControllers = [currentViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
         
@@ -90,23 +90,23 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         var brochures = 0
         var return_visits = 0
         var bible_studies = 0
-        let reports = self.modelController.fetchedResultsController.fetchedObjects as [Report]
+        let reports = self.modelController.fetchedResultsController.fetchedObjects as! [Report]
         let calendar = NSCalendar.currentCalendar()
-        let month = calendar.components(.MonthCalendarUnit, fromDate: NSDate()).month
+        let month = calendar.components(.CalendarUnitMonth, fromDate: NSDate()).month
         let index = find(self.modelController.pageData, month)!
         let monthTitle = self.modelController.pageData[index]
         let format = NSDateFormatter()
         format.dateFormat = "MMMM yyyy"
         
-        var today = calendar.components(.YearCalendarUnit | .MonthCalendarUnit, fromDate: NSDate())
+        var today = calendar.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
         today.month = monthTitle
         
         for report in reports {
             
-            if calendar.components(.MonthCalendarUnit, fromDate: report.date).month == monthTitle {
+            if calendar.components(.CalendarUnitMonth, fromDate: report.date).month == monthTitle {
                 if report.hours != nil {
                     let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
-                    let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
+                    let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
                     
                     hours += timeOnTheMinistry.hour
                     minutes += timeOnTheMinistry.minute
@@ -117,19 +117,19 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
                     }
                 }
                 if report.books != nil {
-                    books += report.books as Int
+                    books += report.books as! Int
                 }
                 if report.magazines != nil {
-                    magazines += report.magazines as Int
+                    magazines += report.magazines as! Int
                 }
                 if report.brochures != nil {
-                    brochures += report.brochures as Int
+                    brochures += report.brochures as! Int
                 }
                 if report.return_visits != nil {
-                    return_visits += report.return_visits as Int
+                    return_visits += report.return_visits as! Int
                 }
                 if report.bible_studies != nil {
-                    bible_studies += report.bible_studies as Int
+                    bible_studies += report.bible_studies as! Int
                 }
             }
         }
@@ -151,14 +151,14 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         if segue.identifier == "AddReport" {
             let managedObjectContext = appDelegate.managedObjectContext!
-            let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as Report
+            let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as! Report
             
-            let nav = segue.destinationViewController as UINavigationController
-            let add = nav.topViewController as AddReportTableViewController
+            let nav = segue.destinationViewController as! UINavigationController
+            let add = nav.topViewController as! AddReportTableViewController
             
             add.report = report
             
@@ -169,7 +169,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
                 cont in self.dismissViewControllerAnimated(true, completion: nil)
             }
         } else if segue.identifier == "RecentReports" {
-            let next = segue.destinationViewController as RecentReportsViewController
+            let next = segue.destinationViewController as! RecentReportsViewController
             next.managedObjectContext = appDelegate.managedObjectContext
         }
     }

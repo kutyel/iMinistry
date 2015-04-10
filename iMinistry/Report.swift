@@ -20,6 +20,6 @@ class Report: NSManagedObject {
     @NSManaged var return_visits: NSNumber?
     
     func week () -> Int {
-        return NSCalendar.currentCalendar().components(.WeekOfYearCalendarUnit, fromDate: self.date).weekOfYear
+        return NSCalendar.currentCalendar().components(.CalendarUnitWeekOfYear, fromDate: self.date).weekOfYear
     }
 }

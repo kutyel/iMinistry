@@ -94,7 +94,7 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     // Buttons
     
     func chartToggleButtonPressed(sender: UIBarButtonItem) {
-        let btnImageView = self.navigationItem.rightBarButtonItem?.valueForKey(anualReportNavButtonViewKey) as UIView
+        let btnImageView = self.navigationItem.rightBarButtonItem?.valueForKey(anualReportNavButtonViewKey) as! UIView
         btnImageView.userInteractionEnabled = false
         
         let transform = self.anualReportsChart.state == JBChartViewState.Expanded ? CGAffineTransformMakeRotation(π) : CGAffineTransformMakeRotation(0)

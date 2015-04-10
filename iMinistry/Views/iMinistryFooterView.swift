@@ -14,7 +14,7 @@ class iMinistryFooterView: UIView {
     var leftLabel = UILabel()
     var rightLabel = UILabel()
 
-    convenience override init(){
+    convenience init(){
         self.init(frame: CGRectZero)
     }
     

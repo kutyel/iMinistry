@@ -32,13 +32,13 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         }
         
         // Set the initial managed object context to the app delegate one
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = appDelegate.managedObjectContext!
         
         // Query the reports for the current month
         
         let cal = NSCalendar.currentCalendar()
-        var com = cal.components(.YearCalendarUnit | .MonthCalendarUnit, fromDate: NSDate())
+        var com = cal.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
         com.day = 1
         
         if let obj: Int = month {
@@ -82,7 +82,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             let format = NSDateFormatter()
             format.dateFormat = "MMMM yyyy"
             let cal = NSCalendar.currentCalendar()
-            var today = cal.components(.YearCalendarUnit | .MonthCalendarUnit, fromDate: NSDate())
+            var today = cal.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
             today.month = monthTitle!
             self.monthTitle.text = format.stringFromDate(cal.dateFromComponents(today)!)
         }
@@ -106,7 +106,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         var return_visits = 0
         var bible_studies = 0
         
-        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        let reports = self.fetchedResultsController.fetchedObjects as! [Report]
         
         let calendar = NSCalendar.currentCalendar()
         
@@ -114,7 +114,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             
             if report.hours != nil {
                 let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
-                let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
+                let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
                 
                 hours += timeOnTheMinistry.hour
                 minutes += timeOnTheMinistry.minute
@@ -125,19 +125,19 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
                 }
             }
             if report.books != nil {
-                books += report.books as Int
+                books += report.books as! Int
             }
             if report.magazines != nil {
-                magazines += report.magazines as Int
+                magazines += report.magazines as! Int
             }
             if report.brochures != nil {
-                brochures += report.brochures as Int
+                brochures += report.brochures as! Int
             }
             if report.return_visits != nil {
-                return_visits += report.return_visits as Int
+                return_visits += report.return_visits as! Int
             }
             if report.bible_studies != nil {
-                bible_studies += report.bible_studies as Int
+                bible_studies += report.bible_studies as! Int
             }
         }
         

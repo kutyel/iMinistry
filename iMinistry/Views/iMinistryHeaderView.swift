@@ -55,7 +55,7 @@ class iMinistryHeaderView: UIView {
         super.init(coder: coder)
     }
     
-    func setSeparatorColor(color: UIColor) {
+    func setCustomSeparatorColor(color: UIColor) {
         separatorColor = color
         separatorView.backgroundColor = separatorColor
         self.setNeedsLayout()

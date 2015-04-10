@@ -19,7 +19,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
             return self._fetchedResultsController!
         }
     
-        let delegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = delegate.managedObjectContext!
     
         // Query all the reports descending by date
@@ -56,13 +56,13 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         var hours = 0
         var minutes = 0
         let calendar = NSCalendar.currentCalendar()
-        let reports = self.fetchedResultsController.fetchedObjects as [Report]
-        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+        let reports = self.fetchedResultsController.fetchedObjects as! [Report]
+        let info = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
         for r in reports {
             if r.week() == info.name?.toInt() {
                 if r.hours != nil {
                     let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: r.hours!, options: nil)
-                    let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: r.hours!, options: nil)
+                    let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: r.hours!, options: nil)
                     hours += timeOnTheMinistry.hour
                     minutes += timeOnTheMinistry.minute
                     
@@ -77,12 +77,12 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+        let info = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
         return info.numberOfObjects
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reportCell", forIndexPath:indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reportCell", forIndexPath:indexPath) as! UITableViewCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
@@ -91,7 +91,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle:
         UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let report = fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        let report = fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
         fetchedResultsController.managedObjectContext.deleteObject(report)
         fetchedResultsController.managedObjectContext.save(nil)
     }
@@ -99,7 +99,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     // Private function to configure the cell to the model
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as Report
+        let report = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Report
         
         // The title is the date
         let format = NSDateFormatter()
@@ -111,7 +111,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         if report.hours != nil {
             let calendar = NSCalendar.currentCalendar()
             let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
-            let timeOnTheMinistry = calendar.components(.HourCalendarUnit | .MinuteCalendarUnit, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
+            let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
             
             if timeOnTheMinistry.hour > 0 {
                 highlights.append("\(timeOnTheMinistry.hour) hours")
@@ -135,19 +135,19 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         self.tableView.beginUpdates()
     }
 
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
             case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             case .Update:
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-                self.configureCell(cell!, atIndexPath: indexPath)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+                self.configureCell(cell!, atIndexPath: indexPath!)
+                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             case .Move:
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             case .Delete:
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             default:
                 return
         }
@@ -159,12 +159,12 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EditReport" {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedObjectContext = appDelegate.managedObjectContext!
-            let indexPath = self.tableView.indexPathForCell(sender as UITableViewCell)
-            let report = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Report
-            let nav = segue.destinationViewController as UINavigationController
-            let edit = nav.topViewController as AddReportTableViewController
+            let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            let report = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Report
+            let nav = segue.destinationViewController as! UINavigationController
+            let edit = nav.topViewController as! AddReportTableViewController
             
             edit.report = report
             

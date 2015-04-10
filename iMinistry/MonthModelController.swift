@@ -17,10 +17,10 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     override init() {
         super.init()
         
-        let reports = self.fetchedResultsController.fetchedObjects as [Report]
+        let reports = self.fetchedResultsController.fetchedObjects as! [Report]
         
         for r in reports {
-            let m = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: r.date).month
+            let m = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: r.date).month
             if !contains(self.pageData, m) {
                 pageData.append(m)
             }
@@ -32,7 +32,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
             return nil
         }
         
-        let dataViewController = storyboard.instantiateViewControllerWithIdentifier("MonthContentController") as MonthTableViewController        
+        let dataViewController = storyboard.instantiateViewControllerWithIdentifier("MonthContentController") as! MonthTableViewController        
         dataViewController.month = self.pageData[index]
         dataViewController.managedObjectContext = self.managedObjectContext
         return dataViewController
@@ -49,7 +49,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     // Page View Controller Data Source
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var index = self.indexOfViewController(viewController as MonthTableViewController)
+        var index = self.indexOfViewController(viewController as! MonthTableViewController)
         if (index == 0) || (index == NSNotFound) {
             return nil
         }
@@ -59,7 +59,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        var index = self.indexOfViewController(viewController as MonthTableViewController)
+        var index = self.indexOfViewController(viewController as! MonthTableViewController)
         if index == NSNotFound {
             return nil
         }
@@ -78,7 +78,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        let month = NSCalendar.currentCalendar().components(.MonthCalendarUnit, fromDate: NSDate()).month
+        let month = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
         return find(self.pageData, month)!
     }
     
@@ -91,7 +91,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         }
         
         // Set the initial managed object context to the app delegate one
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var managedObjectContext = appDelegate.managedObjectContext!
         
         // Query the reports for the current month
