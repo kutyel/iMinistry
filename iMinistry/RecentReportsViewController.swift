@@ -175,5 +175,9 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 cont in self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
+        //else if segue.identifier == "AnualReports" {
+          //  let serviceYearReports = AnualReportChartViewController()
+          //  self.navigationController?.pushViewController(serviceYearReports, animated: true)
+        //}
     }
 }

@@ -33,6 +33,10 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if (self.respondsToSelector(Selector("edgesForExtendedLayout"))) {
+            self.edgesForExtendedLayout = UIRectEdge.None
+        }
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Continue", style: .Plain, target: self, action: "chartToggleButtonPressed:")
         
         anualReportsChart.dataSource = self
