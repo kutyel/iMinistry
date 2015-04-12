@@ -37,7 +37,7 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
             self.edgesForExtendedLayout = UIRectEdge.None
         }
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Continue", style: .Plain, target: self, action: "chartToggleButtonPressed:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-arrow"), style: .Plain, target: self, action: "chartToggleButtonPressed:")
         
         anualReportsChart.dataSource = self
         anualReportsChart.delegate = self

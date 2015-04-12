@@ -13,10 +13,6 @@ class iMinistryFooterView: UIView {
     var padding: CGFloat = 0
     var leftLabel = UILabel()
     var rightLabel = UILabel()
-
-    convenience init(){
-        self.init(frame: CGRectZero)
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
