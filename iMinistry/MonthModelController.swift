@@ -13,6 +13,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     
     var pageData: [Int] = []
     var managedObjectContext: NSManagedObjectContext?
+    let month = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
     
     override init() {
         super.init()
@@ -24,6 +25,10 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
             if !contains(self.pageData, m) {
                 pageData.append(m)
             }
+        }
+        
+        if pageData.count == 0 {
+            pageData.append(month)
         }
     }
     
@@ -53,7 +58,6 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         if (index == 0) || (index == NSNotFound) {
             return nil
         }
-        
         index--
         return self.viewControllerAtIndex(index, storyboard: viewController.storyboard!)
     }
@@ -63,7 +67,6 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         if index == NSNotFound {
             return nil
         }
-        
         index++
         if index == self.pageData.count {
             return nil
@@ -78,7 +81,6 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        let month = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
         return find(self.pageData, month)!
     }
     

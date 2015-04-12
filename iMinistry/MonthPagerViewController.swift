@@ -35,7 +35,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         self.pageViewController!.view.frame = pageViewRect
         
         if (self.respondsToSelector(Selector("edgesForExtendedLayout"))) {
-            self.edgesForExtendedLayout = UIRectEdge.None
+            self.edgesForExtendedLayout = .None
         }
         
         self.pageViewController!.didMoveToParentViewController(self)
@@ -69,7 +69,6 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         let currentViewController = self.pageViewController!.viewControllers[0] as! UIViewController
         let viewControllers = [currentViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
-        
         self.pageViewController!.doubleSided = false
         return .Min
     }
