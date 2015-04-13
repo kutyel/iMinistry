@@ -30,7 +30,7 @@ class iMinistryValueView: UIView {
         valueLabel.numberOfLines = 1
         self.addSubview(valueLabel)
         
-        unitLabel.font = UIFont(name: "HelveticaNeue", size: 60)
+        unitLabel.font = UIFont(name: "HelveticaNeue", size: 70)
         unitLabel.textColor = iMinistryValueInformationViewUnitColor
         unitLabel.shadowColor = iMinistryValueInformationViewShadowColor
         unitLabel.shadowOffset = CGSizeMake(0, 1)
@@ -45,12 +45,18 @@ class iMinistryValueView: UIView {
     
     override func layoutSubviews() {
         var valueSize = CGSizeZero
-        if ((self.valueLabel.text! as NSString).respondsToSelector(Selector("sizeWithAttributes:"))){
-            valueSize = (self.valueLabel.text! as NSString).sizeWithAttributes([NSFontAttributeName:self.valueLabel.font])
+        // TODO: here is a bug for sure
+        if valueLabel.text != nil {
+            if ((self.valueLabel.text! as NSString).respondsToSelector(Selector("sizeWithAttributes:"))){
+                valueSize = (self.valueLabel.text! as NSString).sizeWithAttributes([NSFontAttributeName:self.valueLabel.font])
+            }
         }
         var unitSize = CGSizeZero
-        if ((self.unitLabel.text! as NSString).respondsToSelector(Selector("sizeWithAttributes:"))){
-            unitSize = (self.unitLabel.text! as NSString).sizeWithAttributes([NSFontAttributeName:self.unitLabel.font])
+        // TODO: here is another bug
+        if unitLabel.text != nil {
+            if ((self.unitLabel.text! as NSString).respondsToSelector(Selector("sizeWithAttributes:"))){
+                unitSize = (self.unitLabel.text! as NSString).sizeWithAttributes([NSFontAttributeName:self.unitLabel.font])
+            }
         }
         let xOffSet = ceil((self.bounds.size.width - (valueSize.width + unitSize.width)) * 0.5)
         valueLabel.frame = CGRectMake(xOffSet, ceil(self.bounds.size.height * 0.5) - ceil(valueSize.height * 0.5), valueSize.width, valueSize.height)
@@ -87,7 +93,7 @@ class iMinistryInformationView: UIView {
         
         self.clipsToBounds = true
         
-        titleLabel.font = UIFont(name: "HelveticaNeue", size: 20)
+        titleLabel.font = UIFont(name: "HelveticaNeue", size: 17)
         titleLabel.numberOfLines = 1
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.backgroundColor = UIColor.clearColor()

@@ -11,7 +11,8 @@ import UIKit
 class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
     
     let order = [ 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ]
-    let staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
+    var staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
+    var informationView = iMinistryInformationView()
     
     // Constants
     
@@ -57,9 +58,9 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         footer.rightLabel.text = monthSymbols[7].uppercaseString
         anualReportsChart.footerView = footer
         
-        var info = iMinistryInformationView(frame: CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.anualReportsChart.frame), self.view.bounds.size.width, self.view.bounds.height - CGRectGetMaxY(self.anualReportsChart.frame) - CGRectGetMaxY(self.navigationController!.navigationBar.frame)))
+        informationView = iMinistryInformationView(frame: CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.anualReportsChart.frame), self.view.bounds.size.width, self.view.bounds.height - CGRectGetMaxY(self.anualReportsChart.frame) - CGRectGetMaxY(self.navigationController!.navigationBar.frame)))
         
-        self.view.addSubview(info)
+        self.view.addSubview(informationView)
         self.view.addSubview(anualReportsChart)
         
         anualReportsChart.reloadData()
@@ -72,13 +73,26 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     // Bar Chart Methods
     
     func numberOfBarsInBarChartView(barChartView: JBBarChartView!) -> UInt {
-        return self.anualReportNumBars
+        return anualReportNumBars
     }
     
     func barChartView(barChartView: JBBarChartView!, heightForBarViewAtIndex index: UInt) -> CGFloat {
         // TODO: this is the key line when implementing the real data for the service year
         // let index = find(order, r.month())!
-        return self.staticData[Int(index)]
+        return staticData[Int(index)]
+    }
+    
+    func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt, touchPoint: CGPoint) {
+        informationView.setValueText(staticData[Int(index)].description, unit: " h")
+        informationView.setTitle("TOTAL MONTH HOURS")
+        informationView.setHidden(false, animated: true)
+        //TODO: setTooltipVisible(true, animated: true, atTouchPoint: touchPoint)
+        //TODO: tooltipView.setText(monthSymbols[Int(index)].uppercaseString)
+    }
+    
+    func didDeselectBarChartView(barChartView: JBBarChartView!) {
+        informationView.setHidden(true, animated: true)
+        //TODO: setTooltipVisible(false, animated: true)
     }
     
     // Chart Customization

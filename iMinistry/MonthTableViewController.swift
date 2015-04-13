@@ -87,6 +87,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             self.monthTitle.text = format.stringFromDate(cal.dateFromComponents(today)!)
         }
         
+        //TODO: this can be loaded at the storyboard
         self.hoursLabel.textAlignment = .Right
         self.booksLabel.textAlignment = .Right
         self.magazinesLabel.textAlignment = .Right
