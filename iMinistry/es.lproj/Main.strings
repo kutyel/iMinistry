@@ -1,0 +1,78 @@
+
+/* Class = "UILabel"; text = "text"; ObjectID = "0SN-xw-NzC"; */
+"0SN-xw-NzC.text" = "texto";
+
+/* Class = "UILabel"; text = "Hours"; ObjectID = "3Y3-0q-9IM"; */
+"3Y3-0q-9IM.text" = "Horas";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "4Ui-4E-agQ"; */
+"4Ui-4E-agQ.text" = "Título";
+
+/* Class = "UILabel"; text = "Books & Sign-Language Videos"; ObjectID = "4bO-Kh-vhk"; */
+"4bO-Kh-vhk.text" = "Libros y vídeos en lengua de signos";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6VQ-ZX-ZAD"; */
+"6VQ-ZX-ZAD.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Magazines"; ObjectID = "6py-ev-Oi0"; */
+"6py-ev-Oi0.placeholder" = "Revistas";
+
+/* Class = "UINavigationItem"; title = "Anual Reports"; ObjectID = "Egq-M5-psK"; */
+"Egq-M5-psK.title" = "Informe anual";
+
+/* Class = "UILabel"; text = "Hours:"; ObjectID = "Km5-lO-PAa"; */
+"Km5-lO-PAa.text" = "Horas:";
+
+/* Class = "UITextField"; placeholder = "Return Visits"; ObjectID = "N9W-aE-PcT"; */
+"N9W-aE-PcT.placeholder" = "Revisitas";
+
+/* Class = "UINavigationItem"; title = "Recents"; ObjectID = "RGy-eQ-fwV"; */
+"RGy-eQ-fwV.title" = "Histórico";
+
+/* Class = "UILabel"; text = "text"; ObjectID = "URh-x9-b3G"; */
+"URh-x9-b3G.text" = "texto";
+
+/* Class = "UILabel"; text = "Magazines"; ObjectID = "UfN-P1-SKe"; */
+"UfN-P1-SKe.text" = "Revistas";
+
+/* Class = "UILabel"; text = "text"; ObjectID = "YpY-ug-3pA"; */
+"YpY-ug-3pA.text" = "texto";
+
+/* Class = "UILabel"; text = "Return Visits"; ObjectID = "arC-qZ-X13"; */
+"arC-qZ-X13.text" = "Revisitas";
+
+/* Class = "UILabel"; text = "text"; ObjectID = "g54-te-hbx"; */
+"g54-te-hbx.text" = "texto";
+
+/* Class = "UINavigationItem"; title = "Reports"; ObjectID = "j7d-rg-ygw"; */
+"j7d-rg-ygw.title" = "Informes";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "l25-ac-5mw"; */
+"l25-ac-5mw.text" = "Detalles";
+
+/* Class = "UITextField"; placeholder = "Books & Sign-Language Videos"; ObjectID = "moC-cG-ysS"; */
+"moC-cG-ysS.placeholder" = "Libros y vídeos en lengua de signos";
+
+/* Class = "UILabel"; text = "Brochures & Tracts"; ObjectID = "pQv-K4-SsA"; */
+"pQv-K4-SsA.text" = "Folletos y tratados";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "q8K-QB-hQS"; */
+"q8K-QB-hQS.title" = "Atrás";
+
+/* Class = "UILabel"; text = "text"; ObjectID = "qe0-uK-wVf"; */
+"qe0-uK-wVf.text" = "texto";
+
+/* Class = "UILabel"; text = "text"; ObjectID = "u1N-nv-MIB"; */
+"u1N-nv-MIB.text" = "texto";
+
+/* Class = "UINavigationItem"; title = "Add New Report"; ObjectID = "uSb-yz-ZtP"; */
+"uSb-yz-ZtP.title" = "Nuevo informe";
+
+/* Class = "UITextField"; placeholder = "Different Bible Studies"; ObjectID = "ve3-wH-7Tj"; */
+"ve3-wH-7Tj.placeholder" = "Diferentes estudios bíblicos";
+
+/* Class = "UILabel"; text = "Different Bible Studies"; ObjectID = "wd2-i4-N8Q"; */
+"wd2-i4-N8Q.text" = "Diferentes estudios bíblicos";
+
+/* Class = "UITextField"; placeholder = "Brochures & Tracts"; ObjectID = "zGV-s1-0ho"; */
+"zGV-s1-0ho.placeholder" = "Folletos y tratados";
