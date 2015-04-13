@@ -22,6 +22,8 @@
 		727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803411A5080D900706D17 /* MonthTableViewController.swift */; };
 		727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803431A508C5F00706D17 /* AddReportTableViewController.swift */; };
 		727B7E3B1AC84CCD00C56A55 /* MonthModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */; };
+		728C8CEE1ADC419B004BBFD3 /* iMinistryInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C8CED1ADC419B004BBFD3 /* iMinistryInformationView.swift */; };
+		728C8CF81ADC506E004BBFD3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 728C8CFA1ADC506E004BBFD3 /* InfoPlist.strings */; };
 		72E2BF7F1AD47F9C003FE426 /* iMinistryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,12 +52,16 @@
 		7278031D1A5076EC00706D17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		727803201A5076EC00706D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		727803261A5076EC00706D17 /* iMinistryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMinistryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7278032B1A5076EC00706D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7278032C1A5076EC00706D17 /* iMinistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMinistryTests.swift; sourceTree = "<group>"; };
 		7278033D1A507FAB00706D17 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		727803411A5080D900706D17 /* MonthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewController.swift; sourceTree = "<group>"; };
 		727803431A508C5F00706D17 /* AddReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReportTableViewController.swift; sourceTree = "<group>"; };
 		727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthModelController.swift; sourceTree = "<group>"; };
+		728C8CED1ADC419B004BBFD3 /* iMinistryInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryInformationView.swift; path = Views/iMinistryInformationView.swift; sourceTree = "<group>"; };
+		728C8CF41ADC506E004BBFD3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		728C8CF51ADC506E004BBFD3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		728C8CF91ADC506E004BBFD3 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		728C8CFC1ADC510D004BBFD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryFooterView.swift; path = Views/iMinistryFooterView.swift; sourceTree = "<group>"; };
 		B3ED902632E932E7CB99C2FB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F26181A23AC5936403893EED /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 				722EDF5C1AD2DF5F0095349D /* iMinistry-Bridging-Header.h */,
 				72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */,
 				72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */,
+				728C8CED1ADC419B004BBFD3 /* iMinistryInformationView.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 		727803111A5076EC00706D17 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				728C8CFA1ADC506E004BBFD3 /* InfoPlist.strings */,
 				727803121A5076EC00706D17 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -143,17 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				7278032C1A5076EC00706D17 /* iMinistryTests.swift */,
-				7278032A1A5076EC00706D17 /* Supporting Files */,
 			);
 			path = iMinistryTests;
-			sourceTree = "<group>";
-		};
-		7278032A1A5076EC00706D17 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7278032B1A5076EC00706D17 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F0C0A3E903C63EA554B6534E /* Pods */ = {
@@ -248,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7278031C1A5076EC00706D17 /* Main.storyboard in Resources */,
+				728C8CF81ADC506E004BBFD3 /* InfoPlist.strings in Resources */,
 				727803211A5076EC00706D17 /* LaunchScreen.xib in Resources */,
 				7278031E1A5076EC00706D17 /* Images.xcassets in Resources */,
 			);
@@ -306,6 +306,7 @@
 				72370DFE1AD5DB5B00268871 /* iMinistryHeaderView.swift in Sources */,
 				727803141A5076EC00706D17 /* AppDelegate.swift in Sources */,
 				727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */,
+				728C8CEE1ADC419B004BBFD3 /* iMinistryInformationView.swift in Sources */,
 				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
 				7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */,
 				725B2AC41AD326A400E52093 /* AnualReportChartViewController.swift in Sources */,
@@ -337,6 +338,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				7278031B1A5076EC00706D17 /* Base */,
+				728C8CF41ADC506E004BBFD3 /* es */,
+				728C8CFC1ADC510D004BBFD3 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -345,8 +348,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				727803201A5076EC00706D17 /* Base */,
+				728C8CF51ADC506E004BBFD3 /* es */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		728C8CFA1ADC506E004BBFD3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				728C8CF91ADC506E004BBFD3 /* es */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -468,7 +480,6 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = iMinistryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMinistry.app/iMinistry";
@@ -483,7 +494,6 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = iMinistryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMinistry.app/iMinistry";

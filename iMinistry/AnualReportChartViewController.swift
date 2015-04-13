@@ -57,7 +57,11 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         footer.rightLabel.text = monthSymbols[7].uppercaseString
         anualReportsChart.footerView = footer
         
+        var info = iMinistryInformationView(frame: CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.anualReportsChart.frame), self.view.bounds.size.width, self.view.bounds.height - CGRectGetMaxY(self.anualReportsChart.frame) - CGRectGetMaxY(self.navigationController!.navigationBar.frame)))
+        
+        self.view.addSubview(info)
         self.view.addSubview(anualReportsChart)
+        
         anualReportsChart.reloadData()
     }
 
