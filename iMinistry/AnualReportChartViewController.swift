@@ -83,8 +83,8 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     }
     
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt, touchPoint: CGPoint) {
-        informationView.setValueText(staticData[Int(index)].description, unit: " h")
-        informationView.setTitle("TOTAL MONTH HOURS")
+        informationView.setValueText(Int(staticData[Int(index)]).description, unit: "h")
+        informationView.setTitle("Total Month Hours")
         informationView.setHidden(false, animated: true)
         //TODO: setTooltipVisible(true, animated: true, atTouchPoint: touchPoint)
         //TODO: tooltipView.setText(monthSymbols[Int(index)].uppercaseString)
