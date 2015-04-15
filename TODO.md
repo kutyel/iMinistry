@@ -11,10 +11,13 @@ iMinistry bugs:
   - [ ] Chart icon too big and needs more resolutions
   - [ ] Reload chart when phone rotation
   - [ ] Hide pager control when there is only one page
-  - [ ] Week day start depending on culture (US/EU)
+  - [ ] Move configurations to the storyboard if possible
+  - [ ] Week day start depending on culture (US/EU) Controlled by the OS?
+  - [ ] Optimize string resources and clear strings from code
 
 Questions:
 ----------
-  - [ ] Enable rotation?
+  - [x] Enable rotation? Yes
   - [ ] iPad version?
-  - [ ] Personal or Team name?
+  - [x] Personal or Team name? Personal
+  - [ ] Font?
