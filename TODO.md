@@ -12,7 +12,7 @@ iMinistry bugs:
   - [ ] Reload chart when phone rotation
   - [ ] Hide pager control when there is only one page
   - [ ] Move configurations to the storyboard if possible
-  - [ ] Week day start depending on culture (US/EU) Controlled by the OS?
+  - [x] Week day start depending on culture (US/EU) Controlled by the OS?
   - [ ] Optimize string resources and clear strings from code
 
 Questions:
