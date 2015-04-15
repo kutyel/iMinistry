@@ -31,7 +31,7 @@ class iMinistryValueView: UIView {
         valueLabel.numberOfLines = 1
         self.addSubview(valueLabel)
         
-        unitLabel.font = UIFont(name: "HelveticaNeue", size: 70)
+        unitLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 70)
         unitLabel.textColor = iMinistryValueInformationViewUnitColor
         unitLabel.shadowColor = iMinistryValueInformationViewShadowColor
         unitLabel.shadowOffset = CGSizeMake(0, 1)
@@ -48,19 +48,16 @@ class iMinistryValueView: UIView {
         super.layoutSubviews()
         
         var valueSize = CGSizeZero
-        if let text = valueLabel.text {
-            valueSize = text.sizeWithAttributes([NSFontAttributeName:self.valueLabel.font])
+        if let textValue = valueLabel.text {
+            valueSize = textValue.sizeWithAttributes([NSFontAttributeName:self.valueLabel.font])
         }
         var unitSize = CGSizeZero
-        if let text = unitLabel.text {
-            unitSize = text.sizeWithAttributes([NSFontAttributeName:self.unitLabel.font])
+        if let textUnit = unitLabel.text {
+            unitSize = textUnit.sizeWithAttributes([NSFontAttributeName:self.unitLabel.font])
         }
-        let xOffSet = ceil((self.bounds.size.width - (valueSize.width + unitSize.width)) * 0.5)
-        
-        valueLabel.sizeToFit()
-        valueLabel.frame = CGRectMake(ceil(self.bounds.size.width * 0.5), ceil(self.bounds.size.height * 0.5), valueSize.width, valueSize.height)
-        unitLabel.sizeToFit()
-        unitLabel.frame = CGRectMake(CGRectGetMaxX(valueLabel.frame), ceil(self.bounds.size.height * 0.5) - ceil(unitSize.height * 0.5) + iMinistryValueInformationViewPadding + 3, unitSize.width, unitSize.height)
+        let xOffset = ceil((self.bounds.size.width - (valueSize.width + unitSize.width)) * 0.5)
+        valueLabel.frame = CGRectMake(xOffset, ceil(self.bounds.size.height * 0.5) - ceil(valueSize.height * 0.5), valueSize.width, valueSize.height)
+        unitLabel.frame = CGRectMake(CGRectGetMaxX(valueLabel.frame), ceil(self.bounds.size.height * 0.5) - ceil(unitSize.height * 0.5) + iMinistryValueInformationViewPadding, unitSize.width, unitSize.height)
     }
     
     required init(coder: NSCoder) {
