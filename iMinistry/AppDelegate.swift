@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Custom pager
         
         var pager = UIPageControl.appearance()
+        pager.hidesForSinglePage = true
         pager.pageIndicatorTintColor = UIColor.lightGrayColor()
         pager.currentPageIndicatorTintColor = UIColor.blackColor()
         pager.backgroundColor = UIColor.whiteColor()

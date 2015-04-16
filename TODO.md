@@ -10,14 +10,15 @@ iMinistry bugs:
   - [x] Custom icon for recents and service year
   - [ ] Chart icon too big and needs more resolutions
   - [ ] Reload chart when phone rotation
-  - [ ] Hide pager control when there is only one page
+  - [x] Hide pager control when there is only one page
   - [ ] Move configurations to the storyboard if possible
   - [x] Week day start depending on culture (US/EU) Controlled by the OS?
   - [ ] Optimize string resources and clear strings from code
+  - [ ] Service year **popover** with UITableView and Checkmark icon
 
 Questions:
 ----------
-  - [x] Enable rotation? Yes
   - [ ] iPad version?
+  - [x] Font? Athelas
+  - [x] Enable rotation? Yes
   - [x] Personal or Team name? Personal
-  - [ ] Font?
