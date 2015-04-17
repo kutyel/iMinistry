@@ -3,16 +3,15 @@
 //  iMinistry
 //
 //  Created by Flavio Corpa on 06/04/15.
-//  Copyright (c) 2015 Flavio Corpa. All rights reserved.
+//  Copyright © 2015 Flavio Corpa. All rights reserved.
 //
 
 import UIKit
 
-class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, JBBarChartViewDataSource {
+class AnualReportChartViewController: AnualReportChartBaseController, JBBarChartViewDelegate, JBBarChartViewDataSource {
     
-    let order = [ 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ]
-    var staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
     var informationView = iMinistryInformationView()
+    var staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
     
     // Constants
     
@@ -27,6 +26,7 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
     let anualReportChartHeaderPadding: CGFloat = 20.0
     let anualReportChartFooterHeight: CGFloat = 25.0
     let anualReportChartFooterPadding: CGFloat = 5.0
+    let order = [ 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8 ]
     let monthSymbols = NSDateFormatter().shortMonthSymbols
     
     // View Creation
@@ -86,13 +86,13 @@ class AnualReportChartViewController: UIViewController, JBBarChartViewDelegate, 
         informationView.setValueText(Int(staticData[Int(index)]).description, unit: "h")
         informationView.setTitle("Total Month Hours")
         informationView.setHidden(false, animated: true)
-        //TODO: setTooltipVisible(true, animated: true, atTouchPoint: touchPoint)
-        //TODO: tooltipView.setText(monthSymbols[Int(index)].uppercaseString)
+        self.setTooltipVisible(true, animated: true, touchPoint: touchPoint)
+        self.tooltipView?.setText(monthSymbols[Int(index)].uppercaseString)
     }
     
     func didDeselectBarChartView(barChartView: JBBarChartView!) {
         informationView.setHidden(true, animated: true)
-        //TODO: setTooltipVisible(false, animated: true)
+        self.setTooltipVisible(false, animated: true)
     }
     
     // Chart Customization

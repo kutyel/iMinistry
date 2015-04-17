@@ -3,7 +3,7 @@
 //  iMinistry
 //
 //  Created by Flavio Corpa on 28/12/14.
-//  Copyright (c) 2014 Flavio Corpa. All rights reserved.
+//  Copyright © 2014 Flavio Corpa. All rights reserved.
 //
 
 import UIKit

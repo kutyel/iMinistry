@@ -12,6 +12,9 @@
 		72370DFE1AD5DB5B00268871 /* iMinistryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */; };
 		7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */; };
 		725B2AC41AD326A400E52093 /* AnualReportChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B2AC31AD326A400E52093 /* AnualReportChartViewController.swift */; };
+		725B738B1AE02D68003A38C3 /* iMinistryTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B738A1AE02D68003A38C3 /* iMinistryTooltipView.swift */; };
+		727174121AE118CB00A8143A /* iMinistryTooltipTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727174111AE118CB00A8143A /* iMinistryTooltipTipView.swift */; };
+		727174161AE11A1300A8143A /* AnualReportChartBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727174151AE11A1300A8143A /* AnualReportChartBaseController.swift */; };
 		727803141A5076EC00706D17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803131A5076EC00706D17 /* AppDelegate.swift */; };
 		727803171A5076EC00706D17 /* iMinistry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 727803151A5076EC00706D17 /* iMinistry.xcdatamodeld */; };
 		7278031C1A5076EC00706D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7278031A1A5076EC00706D17 /* Main.storyboard */; };
@@ -45,6 +48,9 @@
 		72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryHeaderView.swift; path = Views/iMinistryHeaderView.swift; sourceTree = "<group>"; };
 		7247074B1AA515FD00822BD4 /* RecentReportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentReportsViewController.swift; sourceTree = "<group>"; };
 		725B2AC31AD326A400E52093 /* AnualReportChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnualReportChartViewController.swift; sourceTree = "<group>"; };
+		725B738A1AE02D68003A38C3 /* iMinistryTooltipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryTooltipView.swift; path = Views/iMinistryTooltipView.swift; sourceTree = "<group>"; };
+		727174111AE118CB00A8143A /* iMinistryTooltipTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iMinistryTooltipTipView.swift; path = Views/iMinistryTooltipTipView.swift; sourceTree = "<group>"; };
+		727174151AE11A1300A8143A /* AnualReportChartBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnualReportChartBaseController.swift; sourceTree = "<group>"; };
 		7278030E1A5076EC00706D17 /* iMinistry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMinistry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		727803121A5076EC00706D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		727803131A5076EC00706D17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 				7278033D1A507FAB00706D17 /* Report.swift */,
 				727803111A5076EC00706D17 /* Supporting Files */,
 				727803431A508C5F00706D17 /* AddReportTableViewController.swift */,
+				727174151AE11A1300A8143A /* AnualReportChartBaseController.swift */,
 				725B2AC31AD326A400E52093 /* AnualReportChartViewController.swift */,
 				727B7E3A1AC84CCD00C56A55 /* MonthModelController.swift */,
 				727803411A5080D900706D17 /* MonthTableViewController.swift */,
@@ -137,6 +144,8 @@
 				72370DFD1AD5DB5B00268871 /* iMinistryHeaderView.swift */,
 				729422701ADDBFC10063B73B /* iMinistryValueView.swift */,
 				728C8CED1ADC419B004BBFD3 /* iMinistryInformationView.swift */,
+				725B738A1AE02D68003A38C3 /* iMinistryTooltipView.swift */,
+				727174111AE118CB00A8143A /* iMinistryTooltipTipView.swift */,
 			);
 			path = iMinistry;
 			sourceTree = "<group>";
@@ -310,10 +319,13 @@
 				727803141A5076EC00706D17 /* AppDelegate.swift in Sources */,
 				727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */,
 				729422711ADDBFC10063B73B /* iMinistryValueView.swift in Sources */,
+				727174121AE118CB00A8143A /* iMinistryTooltipTipView.swift in Sources */,
 				728C8CEE1ADC419B004BBFD3 /* iMinistryInformationView.swift in Sources */,
 				7278033E1A507FAB00706D17 /* Report.swift in Sources */,
 				7247074C1AA515FD00822BD4 /* RecentReportsViewController.swift in Sources */,
 				725B2AC41AD326A400E52093 /* AnualReportChartViewController.swift in Sources */,
+				725B738B1AE02D68003A38C3 /* iMinistryTooltipView.swift in Sources */,
+				727174161AE11A1300A8143A /* AnualReportChartBaseController.swift in Sources */,
 				72E2BF7F1AD47F9C003FE426 /* iMinistryFooterView.swift in Sources */,
 				7225CB901ABF348F00004040 /* MonthPagerViewController.swift in Sources */,
 			);
