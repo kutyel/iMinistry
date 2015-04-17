@@ -3,7 +3,7 @@
 //  iMinistry
 //
 //  Created by Flavio Corpa on 17/04/15.
-//  Copyright (c) 2015 Flavio Corpa. All rights reserved.
+//  Copyright © 2015 Flavio Corpa. All rights reserved.
 //
 
 import UIKit
@@ -22,6 +22,7 @@ class iMinistryTooltipTipView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
+        UIColor.whiteColor().set()
         let ctx = UIGraphicsGetCurrentContext()
         CGContextFillRect(ctx, rect)
         CGContextSaveGState(
@@ -31,7 +32,7 @@ class iMinistryTooltipTipView: UIView {
             CGContextAddLineToPoint(ctx, CGRectGetMinX(rect), CGRectGetMinY(rect))
             CGContextAddLineToPoint(ctx, CGRectGetMaxX(rect), CGRectGetMinY(rect))
             CGContextClosePath(ctx)
-            CGContextSetFillColorWithColor(ctx, UIColor.blackColor().CGColor)
+            CGContextSetFillColorWithColor(ctx, UIColor.lightGrayColor().CGColor)
             CGContextFillPath(ctx)
             return ctx
         }())

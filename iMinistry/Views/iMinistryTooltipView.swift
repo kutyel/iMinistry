@@ -15,8 +15,8 @@ class iMinistryTooltipView: UIView {
     // Constants
     
     let iMinistryTooltipViewCornerRadius: CGFloat = 5.0
-    let iMinistryTooltipViewDefaultWidth: CGFloat = 8.0
-    let iMinistryTooltipViewDefaultHeight: CGFloat = 5.0
+    let iMinistryTooltipViewDefaultWidth: CGFloat = 50.0
+    let iMinistryTooltipViewDefaultHeight: CGFloat = 25.0
 
     override init(frame: CGRect) {
         super.init(frame: CGRectMake(0, 0, iMinistryTooltipViewDefaultWidth, iMinistryTooltipViewDefaultHeight))

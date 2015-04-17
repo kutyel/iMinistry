@@ -3,7 +3,7 @@
 //  iMinistry
 //
 //  Created by Flavio Corpa on 17/04/15.
-//  Copyright (c) 2015 Flavio Corpa. All rights reserved.
+//  Copyright © 2015 Flavio Corpa. All rights reserved.
 //
 
 import UIKit
@@ -12,12 +12,13 @@ class AnualReportChartBaseController: UIViewController {
 
     let iMinistryChartAnimationDuration: NSTimeInterval = 0.25
     
+    var anualReportsChart: JBBarChartView?
     var tooltipView: iMinistryTooltipView?
     var tooltipTipView: iMinistryTooltipTipView?
 
     func setTooltipVisible(visible: Bool, animated: Bool, touchPoint: CGPoint){
         
-        var chartView: JBChartView?
+        var chartView = anualReportsChart
         
         if (tooltipView == nil) {
             tooltipView = iMinistryTooltipView()

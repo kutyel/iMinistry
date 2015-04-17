@@ -17,7 +17,6 @@ class AnualReportChartViewController: AnualReportChartBaseController, JBBarChart
     
     let π = CGFloat(M_PI)
     let anualReportNumBars: UInt = 12
-    let anualReportsChart = JBBarChartView()
     let anualReportNavButtonViewKey = "view"
     let anualReportBarPadding: CGFloat = 1.0
     let anualReportChartHeight: CGFloat = 250.0
@@ -40,30 +39,31 @@ class AnualReportChartViewController: AnualReportChartBaseController, JBBarChart
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-arrow"), style: .Plain, target: self, action: "chartToggleButtonPressed:")
         
-        anualReportsChart.dataSource = self
-        anualReportsChart.delegate = self
-        anualReportsChart.minimumValue = 0
-        anualReportsChart.headerPadding = anualReportChartHeaderPadding
-        anualReportsChart.frame = CGRectMake(anualReportChartPadding, anualReportChartPadding, self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeight)
+        anualReportsChart = JBBarChartView()
+        anualReportsChart!.dataSource = self
+        anualReportsChart!.delegate = self
+        anualReportsChart!.minimumValue = 0
+        anualReportsChart!.headerPadding = anualReportChartHeaderPadding
+        anualReportsChart!.frame = CGRectMake(anualReportChartPadding, anualReportChartPadding, self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeight)
         
         var header = iMinistryHeaderView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartHeaderHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeaderHeight))
         header.titleLabel.text = "SERVICE YEAR"
         header.subtitleLabel.text = "2014-2015"
         header.separatorColor = UIColor.lightGrayColor()
-        anualReportsChart.headerView = header
+        anualReportsChart!.headerView = header
         
         var footer = iMinistryFooterView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartFooterHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartFooterHeight))
         footer.padding = anualReportChartFooterPadding
         footer.leftLabel.text = monthSymbols[8].uppercaseString
         footer.rightLabel.text = monthSymbols[7].uppercaseString
-        anualReportsChart.footerView = footer
+        anualReportsChart!.footerView = footer
         
-        informationView = iMinistryInformationView(frame: CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.anualReportsChart.frame), self.view.bounds.size.width, self.view.bounds.height - CGRectGetMaxY(self.anualReportsChart.frame) - CGRectGetMaxY(self.navigationController!.navigationBar.frame)))
+        informationView = iMinistryInformationView(frame: CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.anualReportsChart!.frame), self.view.bounds.size.width, self.view.bounds.height - CGRectGetMaxY(self.anualReportsChart!.frame) - CGRectGetMaxY(self.navigationController!.navigationBar.frame)))
         
         self.view.addSubview(informationView)
-        self.view.addSubview(anualReportsChart)
+        self.view.addSubview(anualReportsChart!)
         
-        anualReportsChart.reloadData()
+        anualReportsChart!.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,7 +87,7 @@ class AnualReportChartViewController: AnualReportChartBaseController, JBBarChart
         informationView.setTitle("Total Month Hours")
         informationView.setHidden(false, animated: true)
         self.setTooltipVisible(true, animated: true, touchPoint: touchPoint)
-        self.tooltipView?.setText(monthSymbols[Int(index)].uppercaseString)
+        self.tooltipView?.setText(monthSymbols[order[Int(index)] - 1].uppercaseString)
     }
     
     func didDeselectBarChartView(barChartView: JBBarChartView!) {
@@ -115,10 +115,10 @@ class AnualReportChartViewController: AnualReportChartBaseController, JBBarChart
         let btnImageView = self.navigationItem.rightBarButtonItem?.valueForKey(anualReportNavButtonViewKey) as! UIView
         btnImageView.userInteractionEnabled = false
         
-        let transform = self.anualReportsChart.state == JBChartViewState.Expanded ? CGAffineTransformMakeRotation(π) : CGAffineTransformMakeRotation(0)
+        let transform = self.anualReportsChart!.state == JBChartViewState.Expanded ? CGAffineTransformMakeRotation(π) : CGAffineTransformMakeRotation(0)
         btnImageView.transform = transform
         
-        self.anualReportsChart.setState(self.anualReportsChart.state == JBChartViewState.Expanded ? JBChartViewState.Collapsed : JBChartViewState.Expanded, animated: true, callback: {
+        self.anualReportsChart!.setState(self.anualReportsChart!.state == JBChartViewState.Expanded ? JBChartViewState.Collapsed : JBChartViewState.Expanded, animated: true, callback: {
             btnImageView.userInteractionEnabled = true
         })
     }

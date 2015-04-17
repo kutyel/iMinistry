@@ -55,9 +55,9 @@ class iMinistryValueView: UIView {
         if let textUnit = unitLabel.text {
             unitSize = textUnit.sizeWithAttributes([NSFontAttributeName:self.unitLabel.font])
         }
-        let xOffset = ceil((self.bounds.size.width - (valueSize.width + unitSize.width)) * 0.5)
-        valueLabel.frame = CGRectMake(xOffset, ceil(self.bounds.size.height * 0.5) - ceil(valueSize.height * 0.5), valueSize.width, valueSize.height)
-        unitLabel.frame = CGRectMake(CGRectGetMaxX(valueLabel.frame), ceil(self.bounds.size.height * 0.5) - ceil(unitSize.height * 0.5) + iMinistryValueInformationViewPadding, unitSize.width, unitSize.height)
+        let xOffset = ceil((superview!.bounds.size.width - (valueSize.width + unitSize.width)) * 0.5)
+        valueLabel.frame = CGRectMake(xOffset, ceil(superview!.bounds.size.height * 0.5) - ceil(valueSize.height * 0.5), valueSize.width, valueSize.height)
+        unitLabel.frame = CGRectMake(CGRectGetMaxX(valueLabel.frame), ceil(superview!.bounds.size.height * 0.5) - ceil(unitSize.height * 0.5) + iMinistryValueInformationViewPadding, unitSize.width, unitSize.height)
     }
     
     required init(coder: NSCoder) {
