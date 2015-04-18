@@ -60,12 +60,9 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         let info = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
         for r in reports {
             if r.week() == info.name?.toInt() {
-                if r.hours != nil {
-                    let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: r.hours!, options: nil)
-                    let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: r.hours!, options: nil)
+                if let timeOnTheMinistry = r.time() {
                     hours += timeOnTheMinistry.hour
                     minutes += timeOnTheMinistry.minute
-                    
                     if minutes >= 60 {
                         hours++
                         minutes -= 60
@@ -108,11 +105,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         
         // The subtitle is the report's highlights
         var highlights: [String] = [];
-        if report.hours != nil {
-            let calendar = NSCalendar.currentCalendar()
-            let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
-            let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
-            
+        if let timeOnTheMinistry = report.time() {
             if timeOnTheMinistry.hour > 0 {
                 highlights.append("\(timeOnTheMinistry.hour) hours")
             }

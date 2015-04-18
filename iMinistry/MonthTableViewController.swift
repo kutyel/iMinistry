@@ -111,34 +111,29 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         
         let calendar = NSCalendar.currentCalendar()
         
-        for report in reports {
-            
-            if report.hours != nil {
-                let startOfTheDay = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: report.hours!, options: nil)
-                let timeOnTheMinistry = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: startOfTheDay!, toDate: report.hours!, options: nil)
-                
+        for r in reports {
+            if let timeOnTheMinistry = r.time() {
                 hours += timeOnTheMinistry.hour
                 minutes += timeOnTheMinistry.minute
-                
                 if minutes >= 60 {
                     hours++
                     minutes -= 60
                 }
             }
-            if report.books != nil {
-                books += report.books as! Int
+            if r.books != nil {
+                books += r.books as! Int
             }
-            if report.magazines != nil {
-                magazines += report.magazines as! Int
+            if r.magazines != nil {
+                magazines += r.magazines as! Int
             }
-            if report.brochures != nil {
-                brochures += report.brochures as! Int
+            if r.brochures != nil {
+                brochures += r.brochures as! Int
             }
-            if report.return_visits != nil {
-                return_visits += report.return_visits as! Int
+            if r.return_visits != nil {
+                return_visits += r.return_visits as! Int
             }
-            if report.bible_studies != nil {
-                bible_studies += report.bible_studies as! Int
+            if r.bible_studies != nil {
+                bible_studies += r.bible_studies as! Int
             }
         }
         
