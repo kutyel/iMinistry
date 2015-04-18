@@ -11,7 +11,7 @@ iMinistry bugs:
   - [ ] Chart icon too big and needs more resolutions
   - [ ] Reload chart when phone rotation
   - [x] Hide pager control when there is only one page
-  - [ ] Move configurations to the storyboard if possible
+  - [x] Move configurations to the storyboard if possible
   - [x] Week day start depending on culture (US/EU) Controlled by the OS?
   - [ ] Optimize string resources and clear strings from code
   - [ ] Service year **popover** with UITableView and Checkmark icon

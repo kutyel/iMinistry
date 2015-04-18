@@ -100,7 +100,6 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         var bible_studies = 0
         
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
-        
         let calendar = NSCalendar.currentCalendar()
         
         for r in reports {

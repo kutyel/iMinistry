@@ -91,17 +91,15 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         var bible_studies = 0
         let reports = self.modelController.fetchedResultsController.fetchedObjects as! [Report]
         let calendar = NSCalendar.currentCalendar()
-        let month = calendar.components(.CalendarUnitMonth, fromDate: NSDate()).month
-        let index = find(self.modelController.pageData, month)!
-        let monthTitle = self.modelController.pageData[index]
+        let month = self.modelController.month
         let format = NSDateFormatter()
         format.dateFormat = "MMMM yyyy"
         
-        var today = calendar.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
-        today.month = monthTitle
+        var title = calendar.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
+        title.month = month
         
         for r in reports {
-            if r.month() == monthTitle {
+            if r.month() == month {
                 if let timeOnTheMinistry = r.time() {
                     hours += timeOnTheMinistry.hour
                     minutes += timeOnTheMinistry.minute
@@ -128,7 +126,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
             }
         }
         
-        var report = "Report for \(format.stringFromDate(calendar.dateFromComponents(today)!))\n"
+        var report = "Report for \(format.stringFromDate(calendar.dateFromComponents(title)!))\n"
         report += "Books & Sign-Language Videos: \(books)\n"
         report += "Brochures & Tracts: \(brochures)\n"
         report += "Hours: \(hours)\n"
