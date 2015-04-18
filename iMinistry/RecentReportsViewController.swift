@@ -151,16 +151,13 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if segue.identifier == "EditReport" {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let managedObjectContext = appDelegate.managedObjectContext!
             let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)
             let report = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Report
             let nav = segue.destinationViewController as! UINavigationController
             let edit = nav.topViewController as! AddReportTableViewController
-            
             edit.report = report
-            
             edit.didCancel = {
                 cont in self.dismissViewControllerAnimated(true, completion: nil)
             }
@@ -168,9 +165,9 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 cont in self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        //else if segue.identifier == "AnualReports" {
-          //  let serviceYearReports = AnualReportChartViewController()
-          //  self.navigationController?.pushViewController(serviceYearReports, animated: true)
-        //}
+        else if segue.identifier == "AnualReports" {
+            let anualChart = segue.destinationViewController as! AnualReportChartViewController
+            anualChart.managedObjectContext = appDelegate.managedObjectContext
+        }
     }
 }

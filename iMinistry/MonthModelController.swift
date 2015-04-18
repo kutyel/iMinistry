@@ -21,7 +21,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
         
         for r in reports {
-            let m = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: r.date).month
+            let m = r.month()
             if !contains(self.pageData, m) {
                 pageData.append(m)
             }

@@ -51,7 +51,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         let beginDate = cal.dateFromComponents(com)
         let endDate = cal.dateByAddingComponents(one, toDate: beginDate!, options: nil)
         
-        let predicate = NSPredicate(format: "date >= %@ AND date < %@", beginDate!, endDate!);
+        let predicate = NSPredicate(format: "date >= %@ AND date < %@", beginDate!, endDate!)
         let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "hours", ascending: true)
         let req = NSFetchRequest()
@@ -86,14 +86,6 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             today.month = monthTitle!
             self.monthTitle.text = format.stringFromDate(cal.dateFromComponents(today)!)
         }
-        
-        //TODO: this can be loaded at the storyboard
-        self.hoursLabel.textAlignment = .Right
-        self.booksLabel.textAlignment = .Right
-        self.magazinesLabel.textAlignment = .Right
-        self.brochuresLabel.textAlignment = .Right
-        self.returnVisitsLabel.textAlignment = .Right
-        self.bibleStudiesLabel.textAlignment = .Right
     }
     
     // Report logic inside event

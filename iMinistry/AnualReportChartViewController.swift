@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
-class AnualReportChartViewController: AnualReportChartBaseController, JBBarChartViewDelegate, JBBarChartViewDataSource {
+class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedResultsControllerDelegate, JBBarChartViewDelegate, JBBarChartViewDataSource {
     
     var informationView = iMinistryInformationView()
-    var staticData: [CGFloat] = [ 50, 60, 70, 45, 30, 35, 60, 65, 75, 35, 70, 50 ]
+    var data = [Int](count: 12, repeatedValue: 0)
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        let reports = self.fetchedResultsController.fetchedObjects as! [Report]
+        
+        for r in reports {
+            let index = find(order, r.month())!
+            data[index] = data[index] + r.time()!.hour
+        }
+    }
     
     // Constants
     
@@ -77,13 +89,11 @@ class AnualReportChartViewController: AnualReportChartBaseController, JBBarChart
     }
     
     func barChartView(barChartView: JBBarChartView!, heightForBarViewAtIndex index: UInt) -> CGFloat {
-        // TODO: this is the key line when implementing the real data for the service year
-        // let index = find(order, r.month())!
-        return staticData[Int(index)]
+        return CGFloat(data[Int(index)])
     }
     
     func barChartView(barChartView: JBBarChartView!, didSelectBarAtIndex index: UInt, touchPoint: CGPoint) {
-        informationView.setValueText(Int(staticData[Int(index)]).description, unit: "h")
+        informationView.setValueText(Int(data[Int(index)]).description, unit: "h")
         informationView.setTitle("Total Month Hours")
         informationView.setHidden(false, animated: true)
         self.setTooltipVisible(true, animated: true, touchPoint: touchPoint)
@@ -122,4 +132,41 @@ class AnualReportChartViewController: AnualReportChartBaseController, JBBarChart
             btnImageView.userInteractionEnabled = true
         })
     }
+    
+    // Core Data
+    
+    var managedObjectContext: NSManagedObjectContext?
+    
+    var fetchedResultsController: NSFetchedResultsController {
+        
+        if self._fetchedResultsController != nil {
+            return self._fetchedResultsController!
+        }
+        
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedObjectContext = delegate.managedObjectContext!
+        
+        // TODO: Query all the reports for the selected service year
+        //let predicate = NSPredicate(format: "date >= %@ AND date < %@", beginDate!, endDate!)
+        let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: managedObjectContext)
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        let req = NSFetchRequest()
+        req.entity = entity
+        req.sortDescriptors = [sort]
+        //req.predicate = predicate
+        
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        aFetchedResultsController.delegate = self
+        self._fetchedResultsController = aFetchedResultsController
+        
+        var e: NSError?
+        if !self._fetchedResultsController!.performFetch(&e) {
+            println("Error fetching: \(e?.localizedDescription)")
+            abort()
+        }
+        
+        return self._fetchedResultsController!
+    }
+    
+    var _fetchedResultsController: NSFetchedResultsController?
 }
