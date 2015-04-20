@@ -20,8 +20,7 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
         
         for r in reports {
-            let index = find(order, r.month())!
-            data[index] = data[index] + r.time()!.hour
+            data[find(order, r.month())!] += r.time()!.hour
         }
     }
     
