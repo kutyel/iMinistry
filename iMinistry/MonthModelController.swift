@@ -27,7 +27,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
             }
         }
         
-        if pageData.count == 0 {
+        if !contains(self.pageData, month) {
             pageData.append(month)
         }
     }

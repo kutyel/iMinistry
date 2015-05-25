@@ -123,10 +123,14 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
     func chartToggleButtonPressed(sender: UIBarButtonItem) {
         let btnImageView = self.navigationItem.rightBarButtonItem?.valueForKey(anualReportNavButtonViewKey) as! UIView
         btnImageView.userInteractionEnabled = false
-        
         let transform = self.anualReportsChart!.state == JBChartViewState.Expanded ? CGAffineTransformMakeRotation(π) : CGAffineTransformMakeRotation(0)
         btnImageView.transform = transform
-        
+        /*
+        let pop = UIPopoverController(contentViewController: MonthTableViewController())
+        pop.delegate = self
+        popServiceYear = pop
+        popServiceYear?.presentPopoverFromBarButtonItem(sender, permittedArrowDirections: .Any, animated: true)
+        */
         self.anualReportsChart!.setState(self.anualReportsChart!.state == JBChartViewState.Expanded ? JBChartViewState.Collapsed : JBChartViewState.Expanded, animated: true, callback: {
             btnImageView.userInteractionEnabled = true
         })
