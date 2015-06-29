@@ -20,7 +20,6 @@
 		7278031C1A5076EC00706D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7278031A1A5076EC00706D17 /* Main.storyboard */; };
 		7278031E1A5076EC00706D17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7278031D1A5076EC00706D17 /* Images.xcassets */; };
 		727803211A5076EC00706D17 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7278031F1A5076EC00706D17 /* LaunchScreen.xib */; };
-		7278032D1A5076EC00706D17 /* iMinistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7278032C1A5076EC00706D17 /* iMinistryTests.swift */; };
 		7278033E1A507FAB00706D17 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7278033D1A507FAB00706D17 /* Report.swift */; };
 		727803421A5080D900706D17 /* MonthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803411A5080D900706D17 /* MonthTableViewController.swift */; };
 		727803441A508C5F00706D17 /* AddReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727803431A508C5F00706D17 /* AddReportTableViewController.swift */; };
@@ -30,16 +29,6 @@
 		729422711ADDBFC10063B73B /* iMinistryValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729422701ADDBFC10063B73B /* iMinistryValueView.swift */; };
 		72E2BF7F1AD47F9C003FE426 /* iMinistryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E2BF7E1AD47F9C003FE426 /* iMinistryFooterView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		727803271A5076EC00706D17 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 727803061A5076EC00706D17 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7278030D1A5076EC00706D17;
-			remoteInfo = iMinistry;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0C8968A5454ABE528C76280E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +47,6 @@
 		7278031B1A5076EC00706D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7278031D1A5076EC00706D17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		727803201A5076EC00706D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		727803261A5076EC00706D17 /* iMinistryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMinistryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7278032C1A5076EC00706D17 /* iMinistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMinistryTests.swift; sourceTree = "<group>"; };
 		7278033D1A507FAB00706D17 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		727803411A5080D900706D17 /* MonthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewController.swift; sourceTree = "<group>"; };
 		727803431A508C5F00706D17 /* AddReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReportTableViewController.swift; sourceTree = "<group>"; };
@@ -84,13 +71,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		727803231A5076EC00706D17 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				727803101A5076EC00706D17 /* iMinistry */,
-				727803291A5076EC00706D17 /* iMinistryTests */,
 				7278030F1A5076EC00706D17 /* Products */,
 				F0C0A3E903C63EA554B6534E /* Pods */,
 				6AE42471A19D4C8B832D9FF5 /* Frameworks */,
@@ -117,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				7278030E1A5076EC00706D17 /* iMinistry.app */,
-				727803261A5076EC00706D17 /* iMinistryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,14 +137,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		727803291A5076EC00706D17 /* iMinistryTests */ = {
-			isa = PBXGroup;
-			children = (
-				7278032C1A5076EC00706D17 /* iMinistryTests.swift */,
-			);
-			path = iMinistryTests;
-			sourceTree = "<group>";
-		};
 		F0C0A3E903C63EA554B6534E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,39 +168,19 @@
 			productReference = 7278030E1A5076EC00706D17 /* iMinistry.app */;
 			productType = "com.apple.product-type.application";
 		};
-		727803251A5076EC00706D17 /* iMinistryTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 727803331A5076EC00706D17 /* Build configuration list for PBXNativeTarget "iMinistryTests" */;
-			buildPhases = (
-				727803221A5076EC00706D17 /* Sources */,
-				727803231A5076EC00706D17 /* Frameworks */,
-				727803241A5076EC00706D17 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				727803281A5076EC00706D17 /* PBXTargetDependency */,
-			);
-			name = iMinistryTests;
-			productName = iMinistryTests;
-			productReference = 727803261A5076EC00706D17 /* iMinistryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		727803061A5076EC00706D17 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Flavio Corpa";
 				TargetAttributes = {
 					7278030D1A5076EC00706D17 = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					727803251A5076EC00706D17 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 7278030D1A5076EC00706D17;
+						DevelopmentTeam = LCGKZ2MQUD;
 					};
 				};
 			};
@@ -248,7 +198,6 @@
 			projectRoot = "";
 			targets = (
 				7278030D1A5076EC00706D17 /* iMinistry */,
-				727803251A5076EC00706D17 /* iMinistryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -262,13 +211,6 @@
 				728C8CF81ADC506E004BBFD3 /* InfoPlist.strings in Resources */,
 				727803211A5076EC00706D17 /* LaunchScreen.xib in Resources */,
 				7278031E1A5076EC00706D17 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		727803241A5076EC00706D17 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,23 +273,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		727803221A5076EC00706D17 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7278032D1A5076EC00706D17 /* iMinistryTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		727803281A5076EC00706D17 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7278030D1A5076EC00706D17 /* iMinistry */;
-			targetProxy = 727803271A5076EC00706D17 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7278031A1A5076EC00706D17 /* Main.storyboard */ = {
@@ -397,9 +323,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -414,11 +342,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -439,10 +368,12 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -450,8 +381,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -463,11 +395,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iMinistry/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "flaviocorpa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMinistry/iMinistry-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -477,42 +415,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iMinistry/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "flaviocorpa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMinistry/iMinistry-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		727803341A5076EC00706D17 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMinistry.app/iMinistry";
-			};
-			name = Debug;
-		};
-		727803351A5076EC00706D17 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMinistry.app/iMinistry";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -533,15 +445,6 @@
 			buildConfigurations = (
 				727803311A5076EC00706D17 /* Debug */,
 				727803321A5076EC00706D17 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		727803331A5076EC00706D17 /* Build configuration list for PBXNativeTarget "iMinistryTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				727803341A5076EC00706D17 /* Debug */,
-				727803351A5076EC00706D17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

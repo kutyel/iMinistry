@@ -20,7 +20,7 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
         
         for r in reports {
-            data[find(order, r.month())!] += r.time()!.hour
+            data[order.indexOf(r.month())!] += r.time()!.hour
         }
     }
     
@@ -57,13 +57,13 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
         anualReportsChart!.headerPadding = anualReportChartHeaderPadding
         anualReportsChart!.frame = CGRectMake(anualReportChartPadding, anualReportChartPadding, self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeight)
         
-        var header = iMinistryHeaderView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartHeaderHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeaderHeight))
+        let header = iMinistryHeaderView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartHeaderHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartHeaderHeight))
         header.titleLabel.text = "SERVICE YEAR"
         header.subtitleLabel.text = "2014-2015"
         header.separatorColor = UIColor.lightGrayColor()
         anualReportsChart!.headerView = header
         
-        var footer = iMinistryFooterView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartFooterHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartFooterHeight))
+        let footer = iMinistryFooterView(frame: CGRectMake(anualReportChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(anualReportChartFooterHeight * 0.5), self.view.bounds.size.width - (anualReportChartPadding * 2), anualReportChartFooterHeight))
         footer.padding = anualReportChartFooterPadding
         footer.leftLabel.text = monthSymbols[8].uppercaseString
         footer.rightLabel.text = monthSymbols[7].uppercaseString
@@ -147,7 +147,7 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
         }
         
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = delegate.managedObjectContext!
+        let managedObjectContext = delegate.managedObjectContext
         
         // TODO: Query all the reports for the selected service year
         //let predicate = NSPredicate(format: "date >= %@ AND date < %@", beginDate!, endDate!)
@@ -163,8 +163,11 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
         self._fetchedResultsController = aFetchedResultsController
         
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("Error fetching: \(e?.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("Error fetching: \(e?.localizedDescription)")
             abort()
         }
         

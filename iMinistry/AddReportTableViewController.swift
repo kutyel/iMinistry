@@ -74,8 +74,11 @@ class AddReportTableViewController: UITableViewController {
             let managedObjectContext = report.managedObjectContext!
             managedObjectContext.deleteObject(report)
             var e: NSError?
-            if !managedObjectContext.save(&e) {
-                println("Error at cancel: \(e?.localizedDescription)")
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                e = error
+                print("Error at cancel: \(e?.localizedDescription)")
                 abort()
             }
         }
@@ -93,16 +96,19 @@ class AddReportTableViewController: UITableViewController {
         let report = self.report!
         report.date = datePicker.date
         report.hours = hoursTimePicker.date
-        report.books = booksTextField.text.toInt()
-        report.magazines = magazTextField.text.toInt()
-        report.brochures = brochTextField.text.toInt()
-        report.return_visits = returTextField.text.toInt()
-        report.bible_studies = studiTextField.text.toInt()
+        report.books = Int(booksTextField.text!)
+        report.magazines = Int(magazTextField.text!)
+        report.brochures = Int(brochTextField.text!)
+        report.return_visits = Int(returTextField.text!)
+        report.bible_studies = Int(studiTextField.text!)
         let managedObjContext = report.managedObjectContext!
         
         var e: NSError?
-        if !managedObjContext.save(&e) {
-            println("Error at done: \(e?.localizedDescription)")
+        do {
+            try managedObjContext.save()
+        } catch let error as NSError {
+            e = error
+            print("Error at done: \(e?.localizedDescription)")
             abort()
         }
         

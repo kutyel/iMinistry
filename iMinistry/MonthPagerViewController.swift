@@ -21,8 +21,8 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         
         // Load first the page view of the current month
         
-        let month = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
-        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(find(self.modelController.pageData, month)!, storyboard: self.storyboard!)!
+        let month = NSCalendar.currentCalendar().components(.Month, fromDate: NSDate()).month
+        let startingViewController: MonthTableViewController = self.modelController.viewControllerAtIndex(self.modelController.pageData.indexOf(month)!, storyboard: self.storyboard!)!
         let viewControllers = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
         
@@ -31,7 +31,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         self.addChildViewController(self.pageViewController!)
         self.view.addSubview(self.pageViewController!.view)
         
-        var pageViewRect = self.view.bounds
+        let pageViewRect = self.view.bounds
         self.pageViewController!.view.frame = pageViewRect
         
         if (self.respondsToSelector(Selector("edgesForExtendedLayout"))) {
@@ -66,10 +66,11 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
     // UIPageViewController delegate methods
     
     func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
-        let currentViewController = self.pageViewController!.viewControllers[0] as! UIViewController
-        let viewControllers = [currentViewController]
-        self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
-        self.pageViewController!.doubleSided = false
+        if let currentViewController = self.pageViewController!.viewControllers?[0] {
+            let viewControllers = [currentViewController]
+            self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })
+            self.pageViewController!.doubleSided = false
+        }
         return .Min
     }
     
@@ -95,7 +96,7 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
         let format = NSDateFormatter()
         format.dateFormat = "MMMM yyyy"
         
-        var title = calendar.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
+        let title = calendar.components([.Year, .Month], fromDate: NSDate())
         title.month = month
         
         for r in reports {
@@ -142,9 +143,9 @@ class MonthPagerViewController: UIViewController, UIPageViewControllerDelegate {
     // Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if segue.identifier == "AddReport" {
-            let managedObjectContext = appDelegate.managedObjectContext!
+            let managedObjectContext = appDelegate.managedObjectContext
             let report = NSEntityDescription.insertNewObjectForEntityForName("Report", inManagedObjectContext: managedObjectContext) as! Report
             let nav = segue.destinationViewController as! UINavigationController
             let add = nav.topViewController as! AddReportTableViewController

@@ -18,7 +18,7 @@ class AnualReportChartBaseController: UIViewController {
 
     func setTooltipVisible(visible: Bool, animated: Bool, touchPoint: CGPoint){
         
-        var chartView = anualReportsChart
+        let chartView = anualReportsChart
         
         if (tooltipView == nil) {
             tooltipView = iMinistryTooltipView()
@@ -43,7 +43,7 @@ class AnualReportChartBaseController: UIViewController {
             var originalPoint = self.view.convertPoint(touchPoint, fromView: chartView)
             var convertedPoint = originalPoint
             
-            if var chartView = chartView {
+            if let chartView = chartView {
                 let minChartX = (chartView.frame.origin.x + ceil(self.tooltipView!.frame.size.width * 0.5))
                 if (convertedPoint.x < minChartX) { convertedPoint.x = minChartX }
                 let maxChartX = (chartView.frame.origin.x + chartView.frame.size.width - ceil(self.tooltipView!.frame.size.width * 0.5))

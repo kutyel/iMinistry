@@ -21,15 +21,15 @@ class Report: NSManagedObject {
     
     func time () -> NSDateComponents? {
         let cal = NSCalendar.currentCalendar()
-        let start = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: self.hours!, options: nil)
-        return cal.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: start!, toDate: self.hours!, options: nil)
+        let start = cal.dateBySettingHour(0, minute: 0, second: 0, ofDate: self.hours!, options: [])
+        return cal.components([.Hour, .Minute], fromDate: start!, toDate: self.hours!, options: [])
     }
     
     func month () -> Int {
-        return NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: self.date).month
+        return NSCalendar.currentCalendar().components(.Month, fromDate: self.date).month
     }
     
     func week () -> Int {
-        return NSCalendar.currentCalendar().components(.CalendarUnitWeekOfYear, fromDate: self.date).weekOfYear
+        return NSCalendar.currentCalendar().components(.WeekOfYear, fromDate: self.date).weekOfYear
     }
 }

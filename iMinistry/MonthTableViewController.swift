@@ -33,23 +33,23 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         
         // Set the initial managed object context to the app delegate one
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = appDelegate.managedObjectContext!
+        let managedObjectContext = appDelegate.managedObjectContext
         
         // Query the reports for the current month
         
         let cal = NSCalendar.currentCalendar()
-        var com = cal.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
+        let com = cal.components([.Year, .Month], fromDate: NSDate())
         com.day = 1
         
         if let obj: Int = month {
             com.month = obj
         }
         
-        var one = NSDateComponents()
+        let one = NSDateComponents()
         one.month = 1
     
         let beginDate = cal.dateFromComponents(com)
-        let endDate = cal.dateByAddingComponents(one, toDate: beginDate!, options: nil)
+        let endDate = cal.dateByAddingComponents(one, toDate: beginDate!, options: [])
         
         let predicate = NSPredicate(format: "date >= %@ AND date < %@", beginDate!, endDate!)
         let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: managedObjectContext)
@@ -64,8 +64,11 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
         self._fetchedResultsController = aFetchedResultsController
         
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("Error fetching: \(e?.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("Error fetching: \(e?.localizedDescription)")
             abort()
         }
         
@@ -82,7 +85,7 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
             let format = NSDateFormatter()
             format.dateFormat = "MMMM yyyy"
             let cal = NSCalendar.currentCalendar()
-            var today = cal.components(.CalendarUnitYear | .CalendarUnitMonth, fromDate: NSDate())
+            let today = cal.components([.Year, .Month], fromDate: NSDate())
             today.month = monthTitle!
             self.monthTitle.text = format.stringFromDate(cal.dateFromComponents(today)!)
         }
@@ -91,25 +94,18 @@ class MonthTableViewController: UITableViewController, NSFetchedResultsControlle
     // Report logic inside event
     
     override func viewWillAppear(animated: Bool) {
-        var hours = 0
-        var books = 0
-        var minutes = 0
-        var magazines = 0
-        var brochures = 0
-        var return_visits = 0
-        var bible_studies = 0
+        var hours = 0, books = 0, minutes = 0, magazines = 0, brochures = 0, return_visits = 0, bible_studies = 0
         
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
-        let calendar = NSCalendar.currentCalendar()
         
         for r in reports {
             if let timeOnTheMinistry = r.time() {
                 hours += timeOnTheMinistry.hour
                 minutes += timeOnTheMinistry.minute
-                if minutes >= 60 {
-                    hours++
-                    minutes -= 60
-                }
+            }
+            if minutes >= 60 {
+                hours++
+                minutes -= 60
             }
             if r.books != nil {
                 books += r.books as! Int

@@ -13,7 +13,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     
     var pageData: [Int] = []
     var managedObjectContext: NSManagedObjectContext?
-    let month = NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
+    let month = NSCalendar.currentCalendar().components(.Month, fromDate: NSDate()).month
     
     override init() {
         super.init()
@@ -22,12 +22,12 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         
         for r in reports {
             let m = r.month()
-            if !contains(self.pageData, m) {
+            if !self.pageData.contains(m) {
                 pageData.append(m)
             }
         }
         
-        if !contains(self.pageData, month) {
+        if !self.pageData.contains(month) {
             pageData.append(month)
         }
     }
@@ -45,7 +45,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     
     func indexOfViewController(viewController: MonthTableViewController) -> Int {
         if let dataObject: Int = viewController.month {
-            return find(self.pageData, dataObject)!
+            return self.pageData.indexOf(dataObject)!
         } else {
             return NSNotFound
         }
@@ -81,7 +81,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return find(self.pageData, month)!
+        return self.pageData.indexOf(month)!
     }
     
     // Core Data
@@ -94,7 +94,7 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         
         // Set the initial managed object context to the app delegate one
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var managedObjectContext = appDelegate.managedObjectContext!
+        let managedObjectContext = appDelegate.managedObjectContext
         
         // Query the reports for the current month
         
@@ -109,8 +109,11 @@ class MonthModelController: NSObject, NSFetchedResultsControllerDelegate, UIPage
         self._fetchedResultsController = aFetchedResultsController
         
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("Error fetching: \(e?.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("Error fetching: \(e?.localizedDescription)")
             abort()
         }
         

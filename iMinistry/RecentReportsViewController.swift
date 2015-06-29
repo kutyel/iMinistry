@@ -20,7 +20,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         }
     
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedObjectContext = delegate.managedObjectContext!
+        let managedObjectContext = delegate.managedObjectContext
     
         // Query all the reports descending by date
     
@@ -36,8 +36,11 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         self._fetchedResultsController = aFetchedResultsController
         
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("Error fetching: \(e?.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("Error fetching: \(e?.localizedDescription)")
             abort()
         }
 
@@ -53,13 +56,11 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var hours = 0
-        var minutes = 0
-        let calendar = NSCalendar.currentCalendar()
+        var hours = 0, minutes = 0
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
-        let info = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
+        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         for r in reports {
-            if r.week() == info.name?.toInt() {
+            if r.week() == Int(info.name) {
                 if let timeOnTheMinistry = r.time() {
                     hours += timeOnTheMinistry.hour
                     minutes += timeOnTheMinistry.minute
@@ -70,16 +71,16 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 }
             }
         }
-        return minutes > 0 ? "Week \(info.name!) (\(hours)h \(minutes)min)" : "Week \(info.name!) (\(hours)h)"
+        return minutes > 0 ? "Week \(info.name) (\(hours)h \(minutes)min)" : "Week \(info.name) (\(hours)h)"
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let info = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
+        let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         return info.numberOfObjects
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reportCell", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("reportCell", forIndexPath:indexPath) as UITableViewCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
@@ -88,9 +89,12 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle:
         UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let report = fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
+        let report = fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
         fetchedResultsController.managedObjectContext.deleteObject(report)
-        fetchedResultsController.managedObjectContext.save(nil)
+        do {
+            try fetchedResultsController.managedObjectContext.save()
+        } catch _ {
+        }
     }
     
     // Private function to configure the cell to the model
@@ -128,7 +132,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         self.tableView.beginUpdates()
     }
 
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
@@ -141,8 +145,6 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             case .Delete:
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            default:
-                return
         }
     }
 

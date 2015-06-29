@@ -187,8 +187,8 @@ static UIColor *kJBLineChartViewDefaultDotSelectionColor = nil;
 
 @implementation JBLineChartView
 
-@dynamic delegate;
 @dynamic dataSource;
+@dynamic delegate;
 
 #pragma mark - Alloc/Init
 
@@ -312,6 +312,7 @@ static UIColor *kJBLineChartViewDefaultDotSelectionColor = nil;
         // Remove old line view
         if (self.linesView)
         {
+            self.linesView.delegate = nil;
             [self.linesView removeFromSuperview];
             self.linesView = nil;
         }
@@ -339,6 +340,7 @@ static UIColor *kJBLineChartViewDefaultDotSelectionColor = nil;
         // Remove old dot view
         if (self.dotsView)
         {
+            self.dotsView.delegate = nil;
             [self.dotsView removeFromSuperview];
             self.dotsView = nil;
         }
@@ -994,7 +996,7 @@ static UIColor *kJBLineChartViewDefaultDotSelectionColor = nil;
     
     NSUInteger lineIndex = self.linesView.selectedLineIndex != kJBLineChartLinesViewUnselectedLineIndex ? self.linesView.selectedLineIndex : [self lineIndexForPoint:touchPoint];
 	
-	if ([[self.chartData objectAtIndex:lineIndex] count] <= 0)
+	if (lineIndex == kJBLineChartLinesViewUnselectedLineIndex || [[self.chartData objectAtIndex:lineIndex] count] <= 0)
 	{
 		return; // no touch for line without data
 	}
