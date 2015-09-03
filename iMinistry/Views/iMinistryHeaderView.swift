@@ -52,7 +52,7 @@ class iMinistryHeaderView: UIView {
     let headerViewDefaultSeparatorColor = UIColor.lightGrayColor()
     
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder)!
     }
     
     func setCustomSeparatorColor(color: UIColor) {

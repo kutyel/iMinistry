@@ -15,7 +15,7 @@ class AnualReportChartViewController: AnualReportChartBaseController, NSFetchedR
     var data = [Int](count: 12, repeatedValue: 0)
     
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder)!
         
         let reports = self.fetchedResultsController.fetchedObjects as! [Report]
         

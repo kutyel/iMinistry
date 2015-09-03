@@ -89,7 +89,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle:
         UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let report = fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        let report = fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
         fetchedResultsController.managedObjectContext.deleteObject(report)
         do {
             try fetchedResultsController.managedObjectContext.save()
@@ -123,7 +123,7 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         if let returns = report.return_visits as? Int {
             highlights.append("\(returns) return visits")
         }
-        cell.detailTextLabel?.text = ", ".join(highlights.map { $0 })
+        cell.detailTextLabel?.text = highlights.joinWithSeparator(", ")
     }
 
     // Results Controller Delegate
@@ -132,7 +132,8 @@ class RecentReportsViewController: UITableViewController, NSFetchedResultsContro
         self.tableView.beginUpdates()
     }
 
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
         switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)

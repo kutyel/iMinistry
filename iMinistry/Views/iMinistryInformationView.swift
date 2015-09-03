@@ -82,7 +82,7 @@ class iMinistryInformationView: UIView {
     }
     
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder)!
     }
     
     // Content

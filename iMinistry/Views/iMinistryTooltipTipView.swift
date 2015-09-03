@@ -18,7 +18,7 @@ class iMinistryTooltipTipView: UIView {
     }
 
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder)!
     }
     
     override func drawRect(rect: CGRect) {

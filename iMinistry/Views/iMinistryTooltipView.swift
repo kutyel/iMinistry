@@ -34,7 +34,7 @@ class iMinistryTooltipView: UIView {
     }
 
     required init(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder)!
     }
     
     func setText(text: String){
